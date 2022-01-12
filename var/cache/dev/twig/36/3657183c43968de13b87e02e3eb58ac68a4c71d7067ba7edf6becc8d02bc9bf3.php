@@ -194,6 +194,6 @@ class __TwigTemplate_63f1c62739070b1e4c1f8f119570b6e9ecbf00c62157e2fafae62f460dc
         {% block body %}{% endblock %}
     </body>
 </html>
-", "base.html.twig", "C:\\Users\\miche\\OneDrive\\Bureau\\Projet-GEMUCHI\\GEMUCHI\\templates\\base.html.twig");
+", "base.html.twig", "C:\\Users\\lkler\\Desktop\\Sites\\Gemuchi\\Gemuchi\\templates\\base.html.twig");
     }
 }
