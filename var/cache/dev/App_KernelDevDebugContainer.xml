@@ -20,6 +20,7 @@
       <parameter key="DoctrineMigrationsBundle">Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle</parameter>
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
       <parameter key="TwigExtraBundle">Twig\Extra\TwigExtraBundle\TwigExtraBundle</parameter>
+      <parameter key="EasyAdminBundle">EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -65,6 +66,10 @@
       <parameter key="TwigExtraBundle" type="collection">
         <parameter key="path">C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\twig\extra-bundle</parameter>
         <parameter key="namespace">Twig\Extra\TwigExtraBundle</parameter>
+      </parameter>
+      <parameter key="EasyAdminBundle" type="collection">
+        <parameter key="path">C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src</parameter>
+        <parameter key="namespace">EasyCorp\Bundle\EasyAdminBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -171,7 +176,14 @@
       <parameter key="default">doctrine.orm.default_entity_manager</parameter>
     </parameter>
     <parameter key="doctrine.default_entity_manager">default</parameter>
-    <parameter key="doctrine.dbal.connection_factory.types" type="collection"/>
+    <parameter key="doctrine.dbal.connection_factory.types" type="collection">
+      <parameter key="uuid" type="collection">
+        <parameter key="class">Symfony\Bridge\Doctrine\Types\UuidType</parameter>
+      </parameter>
+      <parameter key="ulid" type="collection">
+        <parameter key="class">Symfony\Bridge\Doctrine\Types\UlidType</parameter>
+      </parameter>
+    </parameter>
     <parameter key="doctrine.connections" type="collection">
       <parameter key="default">doctrine.dbal.default_connection</parameter>
     </parameter>
@@ -237,6 +249,7 @@
       <parameter>dev</parameter>
       <parameter>main</parameter>
     </parameter>
+    <parameter key="easyadmin.config" type="collection"/>
     <parameter key="maker.compatible_check.doctrine.supports_attributes">true</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
@@ -318,6 +331,10 @@
       <parameter key="notifier.data_collector" type="collection">
         <parameter>notifier</parameter>
         <parameter>@WebProfiler/Collector/notifier.html.twig</parameter>
+      </parameter>
+      <parameter key="EasyCorp\Bundle\EasyAdminBundle\Inspector\DataCollector" type="collection">
+        <parameter>easyadmin</parameter>
+        <parameter>@EasyAdmin/inspector/data_collector.html.twig</parameter>
       </parameter>
       <parameter key="data_collector.config" type="collection">
         <parameter>config</parameter>
@@ -989,6 +1006,7 @@
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type</argument>
       </argument>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
@@ -996,6 +1014,9 @@
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ColorType</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type\EntityType</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type\FiltersFormType</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudFormType</argument>
       </argument>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type\TransformationFailureExtension</argument>
@@ -1006,6 +1027,8 @@
         <argument>Symfony\Component\Form\Extension\Validator\Type\UploadValidatorExtension</argument>
         <argument>Symfony\Component\Form\Extension\Csrf\Type\FormTypeCsrfExtension</argument>
         <argument>Symfony\Component\Form\Extension\DataCollector\Type\DataCollectorTypeExtension</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Extension\EaCrudFormTypeExtension</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Extension\CollectionTypeExtension</argument>
       </argument>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Validator\ValidatorTypeGuesser</argument>
@@ -1412,7 +1435,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.y4dplYt"/>
+      <argument type="service" id=".service_locator.ZWFYuib"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -1421,12 +1444,16 @@
           <argument type="service" id="form.type_extension.upload.validator"/>
           <argument type="service" id="form.type_extension.csrf"/>
           <argument type="service" id="form.type_extension.form.data_collector"/>
+          <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Form\Extension\EaCrudFormTypeExtension"/>
         </argument>
         <argument key="Symfony\Component\Form\Extension\Core\Type\RepeatedType" type="iterator">
           <argument type="service" id="form.type_extension.repeated.validator"/>
         </argument>
         <argument key="Symfony\Component\Form\Extension\Core\Type\SubmitType" type="iterator">
           <argument type="service" id="form.type_extension.submit.validator"/>
+        </argument>
+        <argument key="Symfony\Component\Form\Extension\Core\Type\CollectionType" type="iterator">
+          <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Form\Extension\CollectionTypeExtension"/>
         </argument>
       </argument>
       <argument type="iterator">
@@ -1856,6 +1883,7 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.ar.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.ar.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.ar.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.ar.php</argument>
           </argument>
           <argument key="az" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.az.xlf</argument>
@@ -1871,6 +1899,7 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.bg.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.bg.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.bg.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.bg.php</argument>
           </argument>
           <argument key="bs" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.bs.xlf</argument>
@@ -1881,11 +1910,13 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.ca.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.ca.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.ca.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.ca.php</argument>
           </argument>
           <argument key="cs" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.cs.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.cs.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.cs.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.cs.php</argument>
           </argument>
           <argument key="cy" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.cy.xlf</argument>
@@ -1894,26 +1925,31 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.da.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.da.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.da.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.da.php</argument>
           </argument>
           <argument key="de" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.de.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.de.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.de.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.de.php</argument>
           </argument>
           <argument key="el" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.el.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.el.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.el.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.el.php</argument>
           </argument>
           <argument key="en" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.en.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.en.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.en.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.en.php</argument>
           </argument>
           <argument key="es" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.es.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.es.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.es.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.es.php</argument>
           </argument>
           <argument key="et" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.et.xlf</argument>
@@ -1924,26 +1960,31 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.eu.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.eu.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.eu.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.eu.php</argument>
           </argument>
           <argument key="fa" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.fa.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.fa.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.fa.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.fa.php</argument>
           </argument>
           <argument key="fi" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.fi.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.fi.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.fi.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.fi.php</argument>
           </argument>
           <argument key="fr" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.fr.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.fr.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.fr.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.fr.php</argument>
           </argument>
           <argument key="gl" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.gl.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.gl.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.gl.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.gl.php</argument>
           </argument>
           <argument key="he" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.he.xlf</argument>
@@ -1954,11 +1995,13 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.hr.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.hr.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.hr.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.hr.php</argument>
           </argument>
           <argument key="hu" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.hu.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.hu.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.hu.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.hu.php</argument>
           </argument>
           <argument key="hy" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.hy.xlf</argument>
@@ -1969,11 +2012,13 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.id.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.id.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.id.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.id.php</argument>
           </argument>
           <argument key="it" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.it.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.it.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.it.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.it.php</argument>
           </argument>
           <argument key="ja" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.ja.xlf</argument>
@@ -1984,11 +2029,13 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.lb.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.lb.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.lb.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.lb.php</argument>
           </argument>
           <argument key="lt" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.lt.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.lt.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.lt.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.lt.php</argument>
           </argument>
           <argument key="lv" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.lv.xlf</argument>
@@ -2014,6 +2061,7 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.nl.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.nl.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.nl.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.nl.php</argument>
           </argument>
           <argument key="nn" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.nn.xlf</argument>
@@ -2024,31 +2072,37 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.no.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.no.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.no.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.no.php</argument>
           </argument>
           <argument key="pl" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.pl.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.pl.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.pl.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.pl.php</argument>
           </argument>
           <argument key="pt" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.pt.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.pt.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.pt.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.pt.php</argument>
           </argument>
           <argument key="pt_BR" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.pt_BR.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.pt_BR.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.pt_BR.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.pt_BR.php</argument>
           </argument>
           <argument key="ro" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.ro.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.ro.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.ro.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.ro.php</argument>
           </argument>
           <argument key="ru" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.ru.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.ru.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.ru.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.ru.php</argument>
           </argument>
           <argument key="sk" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.sk.xlf</argument>
@@ -2059,6 +2113,7 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.sl.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.sl.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.sl.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.sl.php</argument>
           </argument>
           <argument key="sq" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.sq.xlf</argument>
@@ -2079,6 +2134,7 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.sv.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.sv.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.sv.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.sv.php</argument>
           </argument>
           <argument key="th" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.th.xlf</argument>
@@ -2094,11 +2150,13 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.tr.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.tr.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.tr.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.tr.php</argument>
           </argument>
           <argument key="uk" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.uk.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.uk.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.uk.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.uk.php</argument>
           </argument>
           <argument key="uz" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.uz.xlf</argument>
@@ -2114,17 +2172,22 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.zh_CN.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.zh_CN.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.zh_CN.xlf</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.zh_CN.php</argument>
           </argument>
           <argument key="zh_TW" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.zh_TW.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.zh_TW.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.zh_TW.xlf</argument>
           </argument>
+          <argument key="sr_RS" type="collection">
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.sr_RS.php</argument>
+          </argument>
         </argument>
         <argument key="scanned_directories" type="collection">
           <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations</argument>
           <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations</argument>
           <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations</argument>
+          <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations</argument>
           <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi/translations</argument>
           <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\framework-bundle/translations</argument>
           <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\sensio\framework-extra-bundle\src/translations</argument>
@@ -2143,6 +2206,7 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations</argument>
             <argument>translations</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\framework-bundle/translations</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\sensio\framework-extra-bundle\src/translations</argument>
@@ -2440,6 +2504,9 @@
         <argument type="service" id="notifier.data_collector"/>
       </call>
       <call method="add">
+        <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Inspector\DataCollector"/>
+      </call>
+      <call method="add">
         <argument type="service" id="data_collector.config"/>
       </call>
     </service>
@@ -2650,6 +2717,22 @@
         <argument type="collection">
           <argument type="service_closure" id="security.context_listener.0"/>
           <argument>onKernelResponse</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.exception</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\EventListener\ExceptionListener"/>
+          <argument>onKernelException</argument>
+        </argument>
+        <argument>-64</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.view</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\EventListener\CrudResponseListener"/>
+          <argument>onKernelView</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -3092,6 +3175,30 @@
           <argument>onKernelFinishRequest</argument>
         </argument>
         <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\EventListener\AdminRouterSubscriber"/>
+          <argument>handleLegacyEaContext</argument>
+        </argument>
+        <argument>10</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\EventListener\AdminRouterSubscriber"/>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.controller</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\EventListener\AdminRouterSubscriber"/>
+          <argument>onKernelController</argument>
+        </argument>
+        <argument>128</argument>
       </call>
       <call method="addListener">
         <argument>Symfony\Component\Security\Http\Event\CheckPassportEvent</argument>
@@ -3538,6 +3645,25 @@
       <tag name="kernel.event_subscriber"/>
       <tag name="container.hot_path"/>
     </service>
+    <service id="ulid.factory" class="Symfony\Component\Uid\Factory\UlidFactory"/>
+    <service id="uuid.factory" class="Symfony\Component\Uid\Factory\UuidFactory">
+      <argument>6</argument>
+      <argument>6</argument>
+      <argument>5</argument>
+      <argument>Symfony\Component\Uid\UuidV4</argument>
+      <argument>null</argument>
+      <argument>null</argument>
+    </service>
+    <service id="name_based_uuid.factory" class="Symfony\Component\Uid\Factory\NameBasedUuidFactory">
+      <argument type="abstract">Please set the "framework.uid.name_based_uuid_namespace" configuration option to use the "name_based_uuid.factory" service</argument>
+      <factory service="uuid.factory" method="nameBased"/>
+    </service>
+    <service id="random_based_uuid.factory" class="Symfony\Component\Uid\Factory\RandomBasedUuidFactory">
+      <factory service="uuid.factory" method="randomBased"/>
+    </service>
+    <service id="time_based_uuid.factory" class="Symfony\Component\Uid\Factory\TimeBasedUuidFactory">
+      <factory service="uuid.factory" method="timeBased"/>
+    </service>
     <service id="mime_types" class="Symfony\Component\Mime\MimeTypes">
       <call method="setDefault">
         <argument type="service" id="mime_types"/>
@@ -3688,6 +3814,9 @@
       <call method="addExtension">
         <argument type="service" id="doctrine.twig.doctrine_extension"/>
       </call>
+      <call method="addExtension">
+        <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Twig\EasyAdminTwigExtension"/>
+      </call>
       <call method="addGlobal">
         <argument>app</argument>
         <argument type="service" id="twig.app_variable"/>
@@ -3786,6 +3915,14 @@
       <call method="addPath">
         <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-bundle/Resources/views</argument>
         <argument>!Security</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/views</argument>
+        <argument>EasyAdmin</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/views</argument>
+        <argument>!EasyAdmin</argument>
       </call>
       <call method="addPath">
         <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi/templates</argument>
@@ -4364,7 +4501,7 @@
       </call>
     </service>
     <service id="doctrine.dbal.connection_factory" class="Doctrine\Bundle\DoctrineBundle\ConnectionFactory">
-      <argument type="collection"/>
+      <argument>%doctrine.dbal.connection_factory.types%</argument>
     </service>
     <service id="doctrine.dbal.connection" class="Doctrine\DBAL\Connection" abstract="true">
       <factory service="doctrine.dbal.connection_factory" method="createConnection"/>
@@ -4535,11 +4672,11 @@
     <service id="doctrine.orm.quote_strategy.ansi" class="Doctrine\ORM\Mapping\AnsiQuoteStrategy"/>
     <service id="doctrine.ulid_generator" class="Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator">
       <tag name="doctrine.id_generator"/>
-      <argument>null</argument>
+      <argument type="service" id="ulid.factory" on-invalid="ignore"/>
     </service>
     <service id="doctrine.uuid_generator" class="Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator">
       <tag name="doctrine.id_generator"/>
-      <argument>null</argument>
+      <argument type="service" id="uuid.factory" on-invalid="ignore"/>
     </service>
     <service id="doctrine.cache_clear_metadata_command" class="Doctrine\Bundle\DoctrineBundle\Command\Proxy\ClearMetadataCacheDoctrineCommand">
       <tag name="console.command" command="doctrine:cache:clear-metadata"/>
@@ -5635,6 +5772,335 @@
       </call>
     </service>
     <service id="twig.missing_extension_suggestor" class="Twig\Extra\TwigExtraBundle\MissingExtensionSuggestor"/>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminMigrationCommand" class="EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminMigrationCommand" public="true">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Maker\Migrator"/>
+      <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi</argument>
+      <call method="setName">
+        <argument>make:admin:migration</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Migrates EasyAdmin2 YAML config into EasyAdmin 3 PHP config classes</argument>
+      </call>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminDashboardCommand" class="EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminDashboardCommand" public="true">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Maker\ClassMaker"/>
+      <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi</argument>
+      <call method="setName">
+        <argument>make:admin:dashboard</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Creates a new EasyAdmin Dashboard class</argument>
+      </call>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand" class="EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand" public="true">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi</argument>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Maker\ClassMaker"/>
+      <argument type="service" id="doctrine"/>
+      <call method="setName">
+        <argument>make:admin:crud</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Creates a new EasyAdmin CRUD controller class</argument>
+      </call>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Maker\ClassMaker" class="EasyCorp\Bundle\EasyAdminBundle\Maker\ClassMaker">
+      <argument type="service" id="kernel"/>
+      <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi</argument>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Maker\Migrator" class="EasyCorp\Bundle\EasyAdminBundle\Maker\Migrator"/>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Cache\CacheWarmer" class="EasyCorp\Bundle\EasyAdminBundle\Cache\CacheWarmer">
+      <tag name="kernel.cache_warmer"/>
+      <argument type="service" id="router.default"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Inspector\DataCollector" class="EasyCorp\Bundle\EasyAdminBundle\Inspector\DataCollector">
+      <tag name="data_collector" id="easyadmin" template="@EasyAdmin/inspector/data_collector.html.twig"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\EventListener\ExceptionListener" class="EasyCorp\Bundle\EasyAdminBundle\EventListener\ExceptionListener">
+      <tag name="kernel.event_listener" event="kernel.exception" priority="-64"/>
+      <argument>true</argument>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="twig"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Twig\EasyAdminTwigExtension" class="EasyCorp\Bundle\EasyAdminBundle\Twig\EasyAdminTwigExtension">
+      <tag name="twig.extension"/>
+      <argument type="service" id="service_locator_EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Form\Extension\EaCrudFormTypeExtension" class="EasyCorp\Bundle\EasyAdminBundle\Form\Extension\EaCrudFormTypeExtension">
+      <tag name="form.type_extension"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Form\Extension\CollectionTypeExtension" class="EasyCorp\Bundle\EasyAdminBundle\Form\Extension\CollectionTypeExtension">
+      <tag name="form.type_extension"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker" class="EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker">
+      <argument type="service" id="security.authorization_checker" on-invalid="null"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Intl\IntlFormatter" class="EasyCorp\Bundle\EasyAdminBundle\Intl\IntlFormatter"/>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider" class="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider">
+      <argument type="service" id="request_stack"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\EventListener\AdminRouterSubscriber" class="EasyCorp\Bundle\EasyAdminBundle\EventListener\AdminRouterSubscriber">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="container.hot_path"/>
+      <tag name="container.hot_path"/>
+      <tag name="container.hot_path"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\AdminContextFactory"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Registry\DashboardControllerRegistry"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\ControllerFactory"/>
+      <argument type="service" id="debug.controller_resolver"/>
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="twig"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\UrlSigner"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\ControllerFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\ControllerFactory">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Registry\DashboardControllerRegistry"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry"/>
+      <argument type="service" id="debug.controller_resolver"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\EventListener\CrudResponseListener" class="EasyCorp\Bundle\EasyAdminBundle\EventListener\CrudResponseListener">
+      <tag name="kernel.event_listener" event="Symfony\Component\HttpKernel\Event\ViewEvent"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="twig"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\AdminContextFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\AdminContextFactory">
+      <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\var\cache\dev</argument>
+      <argument type="service" id="translator.data_collector"/>
+      <argument type="service" id="security.token_storage" on-invalid="null"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\MenuFactory"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" class="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" shared="false">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Registry\DashboardControllerRegistry"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\UrlSigner"/>
+    </service>
+    <service id="service_locator_EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
+      </argument>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Router\UrlSigner" class="EasyCorp\Bundle\EasyAdminBundle\Router\UrlSigner">
+      <argument>%env(APP_SECRET)%</argument>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\MenuFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\MenuFactory">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker"/>
+      <argument type="service" id="translator.data_collector"/>
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="security.logout_url_generator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityRepository" class="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityRepository">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="doctrine"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\FormFactory"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\FieldFactory"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\ActionFactory"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker"/>
+      <argument type="service" id="doctrine"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityPaginator" class="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityPaginator">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityUpdater" class="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityUpdater">
+      <argument type="service" id="property_accessor"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\PaginatorFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\PaginatorFactory">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityPaginator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\FormFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\FormFactory">
+      <argument type="service" id="form.factory"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\FieldFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\FieldFactory">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker"/>
+      <argument type="tagged_iterator" tag="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Provider\FieldProvider" class="EasyCorp\Bundle\EasyAdminBundle\Provider\FieldProvider">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\FilterFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\FilterFactory">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="tagged_iterator" tag="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FiltersFormType" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FiltersFormType">
+      <tag name="form.type" alias="ea_filters"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType">
+      <tag name="form.type"/>
+      <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi</argument>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ChoiceConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ChoiceConfigurator">
+      <tag name="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\CommonConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\CommonConfigurator">
+      <tag name="ea.filter_configurator" priority="9999"/>
+      <tag name="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ComparisonConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ComparisonConfigurator">
+      <tag name="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\DateTimeConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\DateTimeConfigurator">
+      <tag name="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\EntityConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\EntityConfigurator">
+      <tag name="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NullConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NullConfigurator">
+      <tag name="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NumericConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NumericConfigurator">
+      <tag name="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\TextConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\TextConfigurator">
+      <tag name="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\ActionFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\ActionFactory">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker"/>
+      <argument type="service" id="translator.data_collector"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
+      <argument type="service" id="security.csrf.token_manager"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Security\SecurityVoter" class="EasyCorp\Bundle\EasyAdminBundle\Security\SecurityVoter">
+      <tag name="security.voter"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudFormType" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudFormType">
+      <tag name="form.type" alias="ea_crud"/>
+      <argument type="service" id="form.type_guesser.doctrine"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ArrayConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ArrayConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AssociationConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AssociationConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
+      <argument type="service" id="translator.data_collector"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AvatarConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AvatarConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\BooleanConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\BooleanConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CodeEditorConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CodeEditorConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CollectionConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CollectionConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPostConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPostConfigurator">
+      <tag name="ea.field_configurator" priority="-9999"/>
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument>UTF-8</argument>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPreConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPreConfigurator">
+      <tag name="ea.field_configurator" priority="9999"/>
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="translator.data_collector"/>
+      <argument type="service" id="property_accessor"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CountryConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CountryConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="assets.packages"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CurrencyConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CurrencyConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\DateTimeConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\DateTimeConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Intl\IntlFormatter"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\EmailConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\EmailConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\FormConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\FormConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IdConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IdConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ImageConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ImageConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi</argument>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IntegerConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IntegerConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LanguageConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LanguageConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LocaleConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LocaleConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\MoneyConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\MoneyConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Intl\IntlFormatter"/>
+      <argument type="service" id="property_accessor"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\NumberConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\NumberConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Intl\IntlFormatter"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\PercentConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\PercentConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ChoiceConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ChoiceConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="translator.data_collector"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\SlugConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\SlugConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="translator.data_collector"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TelephoneConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TelephoneConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextEditorConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextEditorConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TimezoneConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TimezoneConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\UrlConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\UrlConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator" class="EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\UrlSigner"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Registry\DashboardControllerRegistry"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry"/>
+      <deprecated package="easycorp/easyadmin-bundle" version="3.2.0">The "%service_id%" service is deprecated, use "EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" instead.</deprecated>
+    </service>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AdminRepository" class="App\Repository\AdminRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\AdminRepository" class="App\Repository\AdminRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategoriesRepository" class="App\Repository\CategoriesRepository" autowire="true" abstract="true"/>
@@ -5647,6 +6113,78 @@
     <service id=".abstract.instanceof.App\Repository\NotesRepository" class="App\Repository\NotesRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\TestsRepository" class="App\Repository\TestsRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\TestsRepository" class="App\Repository\TestsRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ChoiceConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ChoiceConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ChoiceConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ChoiceConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\CommonConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\CommonConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\CommonConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\CommonConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ComparisonConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ComparisonConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ComparisonConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ComparisonConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\DateTimeConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\DateTimeConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\DateTimeConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\DateTimeConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\EntityConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\EntityConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\EntityConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\EntityConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NullConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NullConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NullConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NullConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NumericConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NumericConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NumericConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NumericConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\TextConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\TextConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\TextConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\TextConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ArrayConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ArrayConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ArrayConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ArrayConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AssociationConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AssociationConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AssociationConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AssociationConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AvatarConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AvatarConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AvatarConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AvatarConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\BooleanConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\BooleanConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\BooleanConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\BooleanConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CodeEditorConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CodeEditorConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CodeEditorConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CodeEditorConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CollectionConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CollectionConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CollectionConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CollectionConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPostConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPostConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPostConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPostConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPreConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPreConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPreConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPreConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CountryConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CountryConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CountryConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CountryConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CurrencyConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CurrencyConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CurrencyConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CurrencyConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\DateTimeConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\DateTimeConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\DateTimeConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\DateTimeConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\EmailConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\EmailConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\EmailConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\EmailConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\FormConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\FormConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\FormConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\FormConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IdConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IdConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IdConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IdConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ImageConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ImageConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ImageConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ImageConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IntegerConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IntegerConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IntegerConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IntegerConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LanguageConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LanguageConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LanguageConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LanguageConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LocaleConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LocaleConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LocaleConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LocaleConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\MoneyConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\MoneyConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\MoneyConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\MoneyConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\NumberConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\NumberConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\NumberConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\NumberConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\PercentConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\PercentConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\PercentConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\PercentConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ChoiceConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ChoiceConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ChoiceConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ChoiceConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\SlugConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\SlugConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\SlugConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\SlugConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TelephoneConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TelephoneConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TelephoneConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TelephoneConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextEditorConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextEditorConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextEditorConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextEditorConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TimezoneConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TimezoneConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TimezoneConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TimezoneConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\UrlConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\UrlConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\UrlConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\UrlConfigurator" abstract="true"/>
     <service id=".service_locator.gSv9zYw" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6015,6 +6553,16 @@
       <argument type="service" id="debug.security.user_value_resolver.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
+    <service id="debug.EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\AdminContextResolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver">
+      <tag name="controller.argument_value_resolver"/>
+      <argument type="service" id="debug.EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\AdminContextResolver.inner"/>
+      <argument type="service" id="debug.stopwatch"/>
+    </service>
+    <service id="debug.EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\BatchActionDtoResolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver">
+      <tag name="controller.argument_value_resolver"/>
+      <argument type="service" id="debug.EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\BatchActionDtoResolver.inner"/>
+      <argument type="service" id="debug.stopwatch"/>
+    </service>
     <service id="debug.argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver">
       <tag name="controller.argument_value_resolver" priority="-50"/>
       <argument type="service" id="debug.argument_resolver.service.inner"/>
@@ -6035,9 +6583,12 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.y4dplYt" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.ZWFYuib" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudFormType" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudFormType"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FiltersFormType" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FiltersFormType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ColorType" type="service_closure" id="form.type.color"/>
@@ -6264,6 +6815,10 @@
       <argument type="service" id="security.access.expression_voter"/>
       <argument type="service" id="debug.event_dispatcher"/>
     </service>
+    <service id="debug.security.voter.EasyCorp\Bundle\EasyAdminBundle\Security\SecurityVoter" class="Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Security\SecurityVoter"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
     <service id="security.listener.csrf_protection" class="Symfony\Component\Security\Http\EventListener\CsrfProtectionListener">
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="security.csrf.token_manager"/>
@@ -6273,6 +6828,15 @@
       <argument type="service" id="security.csrf.token_storage"/>
     </service>
     <service id="security.ldap_locator" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <argument type="collection"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Registry\DashboardControllerRegistry" class="EasyCorp\Bundle\EasyAdminBundle\Registry\DashboardControllerRegistry">
+      <argument>%env(APP_SECRET)%</argument>
+      <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\var\cache\dev</argument>
+      <argument type="collection"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry" class="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry">
+      <argument>%env(APP_SECRET)%</argument>
       <argument type="collection"/>
     </service>
     <service id=".service_locator.yY.p4P7" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -6424,6 +6988,8 @@
         <argument type="service" id="debug.argument_resolver.request"/>
         <argument type="service" id="debug.argument_resolver.session"/>
         <argument type="service" id="debug.security.user_value_resolver"/>
+        <argument type="service" id="debug.EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\AdminContextResolver"/>
+        <argument type="service" id="debug.EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\BatchActionDtoResolver"/>
         <argument type="service" id="debug.argument_resolver.service"/>
         <argument type="service" id="debug.argument_resolver.default"/>
         <argument type="service" id="debug.argument_resolver.variadic"/>
@@ -6448,6 +7014,7 @@
         <argument type="service" id="debug.security.voter.security.access.authenticated_voter"/>
         <argument type="service" id="debug.security.voter.security.access.simple_role_voter"/>
         <argument type="service" id="debug.security.voter.security.access.expression_voter"/>
+        <argument type="service" id="debug.security.voter.EasyCorp\Bundle\EasyAdminBundle\Security\SecurityVoter"/>
       </argument>
       <argument type="service">
         <service class="Symfony\Component\Security\Core\Authorization\Strategy\AffirmativeStrategy">
@@ -6463,6 +7030,13 @@
     <service id="debug.argument_resolver.session.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver"/>
     <service id="debug.security.user_value_resolver.inner" class="Symfony\Component\Security\Http\Controller\UserValueResolver">
       <argument type="service" id="security.token_storage"/>
+    </service>
+    <service id="debug.EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\AdminContextResolver.inner" class="EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\AdminContextResolver">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+    </service>
+    <service id="debug.EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\BatchActionDtoResolver.inner" class="EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\BatchActionDtoResolver">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <argument type="service" id=".service_locator.zxMugcL"/>
@@ -6756,6 +7330,27 @@
       <argument>false</argument>
       <argument type="service_closure" id="security.command.user_password_hash"/>
     </service>
+    <service id=".EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminMigrationCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>make:admin:migration</argument>
+      <argument type="collection"/>
+      <argument>Migrates EasyAdmin2 YAML config into EasyAdmin 3 PHP config classes</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminMigrationCommand"/>
+    </service>
+    <service id=".EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminDashboardCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>make:admin:dashboard</argument>
+      <argument type="collection"/>
+      <argument>Creates a new EasyAdmin Dashboard class</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminDashboardCommand"/>
+    </service>
+    <service id=".EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>make:admin:crud</argument>
+      <argument type="collection"/>
+      <argument>Creates a new EasyAdmin CRUD controller class</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand"/>
+    </service>
     <service id=".maker.auto_command.make_auth.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>make:auth</argument>
       <argument type="collection"/>
@@ -6908,7 +7503,7 @@
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.w0Pnb.3"/>
+      <argument type="service" id=".service_locator.02jRKEn"/>
       <argument type="collection">
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -6981,6 +7576,9 @@
         <argument key="debug:firewall">security.command.debug_firewall</argument>
         <argument key="security:encode-password">security.command.user_password_encoder</argument>
         <argument key="security:hash-password">security.command.user_password_hash</argument>
+        <argument key="make:admin:migration">EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminMigrationCommand</argument>
+        <argument key="make:admin:dashboard">EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminDashboardCommand</argument>
+        <argument key="make:admin:crud">EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand</argument>
         <argument key="make:auth">maker.auto_command.make_auth</argument>
         <argument key="make:command">maker.auto_command.make_command</argument>
         <argument key="make:controller">maker.auto_command.make_controller</argument>
@@ -7006,7 +7604,7 @@
         <argument key="make:migration">maker.auto_command.make_migration</argument>
       </argument>
     </service>
-    <service id=".service_locator.w0Pnb.3" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.02jRKEn" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="console.command.about" type="service_closure" id=".console.command.about.lazy"/>
@@ -7079,6 +7677,9 @@
         <argument key="security.command.debug_firewall" type="service_closure" id=".security.command.debug_firewall.lazy"/>
         <argument key="security.command.user_password_encoder" type="service_closure" id=".security.command.user_password_encoder.lazy"/>
         <argument key="security.command.user_password_hash" type="service_closure" id=".security.command.user_password_hash.lazy"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminMigrationCommand" type="service_closure" id=".EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminMigrationCommand.lazy"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminDashboardCommand" type="service_closure" id=".EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminDashboardCommand.lazy"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand" type="service_closure" id=".EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand.lazy"/>
         <argument key="maker.auto_command.make_auth" type="service_closure" id=".maker.auto_command.make_auth.lazy"/>
         <argument key="maker.auto_command.make_command" type="service_closure" id=".maker.auto_command.make_command.lazy"/>
         <argument key="maker.auto_command.make_controller" type="service_closure" id=".maker.auto_command.make_controller.lazy"/>
@@ -7279,6 +7880,11 @@
     <service id="Symfony\Component\PropertyInfo\PropertyInitializableExtractorInterface" alias="property_info"/>
     <service id="Symfony\Component\PropertyInfo\PropertyReadInfoExtractorInterface" alias="property_info.reflection_extractor"/>
     <service id="Symfony\Component\PropertyInfo\PropertyWriteInfoExtractorInterface" alias="property_info.reflection_extractor"/>
+    <service id="Symfony\Component\Uid\Factory\UlidFactory" alias="ulid.factory"/>
+    <service id="Symfony\Component\Uid\Factory\UuidFactory" alias="uuid.factory"/>
+    <service id="Symfony\Component\Uid\Factory\NameBasedUuidFactory" alias="name_based_uuid.factory"/>
+    <service id="Symfony\Component\Uid\Factory\RandomBasedUuidFactory" alias="random_based_uuid.factory"/>
+    <service id="Symfony\Component\Uid\Factory\TimeBasedUuidFactory" alias="time_based_uuid.factory"/>
     <service id="Symfony\Component\Mime\MimeTypesInterface" alias="mime_types"/>
     <service id="Symfony\Component\Mime\MimeTypeGuesserInterface" alias="mime_types"/>
     <service id="sensio_framework_extra.converter.doctrine.orm.expression_language" alias="sensio_framework_extra.converter.doctrine.orm.expression_language.default"/>
@@ -7359,10 +7965,11 @@
     <service id="Psr\Log\LoggerInterface $doctrineLogger" alias="monolog.logger.doctrine"/>
     <service id="Psr\Log\LoggerInterface $securityLogger" alias="monolog.logger.security"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
+    <service id=".service_locator.Mo0FXEU" alias="service_locator_EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
     <service id=".service_locator.YxNo8ZP" alias=".service_locator.zxMugcL"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.19_mNxd"/>
-    <service id=".service_locator.Za9MpXe" alias=".service_locator.y4dplYt"/>
+    <service id=".service_locator.3l1LkXo" alias=".service_locator.ZWFYuib"/>
     <service id=".service_locator.4hi2aOY" alias=".service_locator.bBRwv06"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id="validator" alias="debug.validator" public="true"/>
@@ -7379,6 +7986,8 @@
     <service id="argument_resolver.request" alias="debug.argument_resolver.request"/>
     <service id="argument_resolver.session" alias="debug.argument_resolver.session"/>
     <service id="security.user_value_resolver" alias="debug.security.user_value_resolver"/>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\AdminContextResolver" alias="debug.EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\AdminContextResolver"/>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\BatchActionDtoResolver" alias="debug.EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\BatchActionDtoResolver"/>
     <service id="argument_resolver.service" alias="debug.argument_resolver.service"/>
     <service id="argument_resolver.default" alias="debug.argument_resolver.default"/>
     <service id="argument_resolver.variadic" alias="debug.argument_resolver.variadic"/>
