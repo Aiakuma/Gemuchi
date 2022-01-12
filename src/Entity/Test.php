@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\TestsRepository;
+use App\Repository\TestRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=TestsRepository::class)
+ * @ORM\Entity(repositoryClass=TestRepository::class)
  */
-class Tests
+class Test
 {
     /**
      * @ORM\Id
@@ -63,9 +63,9 @@ class Tests
     private $ouverture_reflexion;
 
     /**
-     * @ORM\OneToOne(targetEntity=Games::class, mappedBy="Tests", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Game::class, mappedBy="Test", cascade={"persist", "remove"})
      */
-    private $games;
+    private $game;
 
     public function getId(): ?int
     {
@@ -180,24 +180,24 @@ class Tests
         return $this;
     }
 
-    public function getGames(): ?Games
+    public function getGame(): ?Game
     {
-        return $this->games;
+        return $this->game;
     }
 
-    public function setGames(?Games $games): self
+    public function setGame(?Game $game): self
     {
         // unset the owning side of the relation if necessary
-        if ($games === null && $this->games !== null) {
-            $this->games->setTests(null);
+        if ($game === null && $this->game !== null) {
+            $this->game->setTest(null);
         }
 
         // set the owning side of the relation if necessary
-        if ($games !== null && $games->getTests() !== $this) {
-            $games->setTests($this);
+        if ($game !== null && $game->getTest() !== $this) {
+            $game->setTest($this);
         }
 
-        $this->games = $games;
+        $this->game = $game;
 
         return $this;
     }

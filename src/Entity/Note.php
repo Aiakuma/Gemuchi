@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\NotesRepository;
+use App\Repository\NoteRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=NotesRepository::class)
+ * @ORM\Entity(repositoryClass=NoteRepository::class)
  */
-class Notes
+class Note
 {
     /**
      * @ORM\Id
@@ -118,9 +118,9 @@ class Notes
     private $coup_de_coeur;
 
     /**
-     * @ORM\OneToOne(targetEntity=Games::class, mappedBy="Notes", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Game::class, mappedBy="Note", cascade={"persist", "remove"})
      */
-    private $games;
+    private $game;
 
     public function getId(): ?int
     {
@@ -367,24 +367,24 @@ class Notes
         return $this;
     }
 
-    public function getGames(): ?Games
+    public function getGame(): ?Game
     {
-        return $this->games;
+        return $this->game;
     }
 
-    public function setGames(?Games $games): self
+    public function setGame(?Game $game): self
     {
         // unset the owning side of the relation if necessary
-        if ($games === null && $this->games !== null) {
-            $this->games->setNotes(null);
+        if ($game === null && $this->game !== null) {
+            $this->game->setNote(null);
         }
 
         // set the owning side of the relation if necessary
-        if ($games !== null && $games->getNotes() !== $this) {
-            $games->setNotes($this);
+        if ($game !== null && $game->getNote() !== $this) {
+            $game->setNote($this);
         }
 
-        $this->games = $games;
+        $this->game = $game;
 
         return $this;
     }

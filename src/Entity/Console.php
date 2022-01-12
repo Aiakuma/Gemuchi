@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ConsolesRepository;
+use App\Repository\ConsoleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ConsolesRepository::class)
+ * @ORM\Entity(repositoryClass=ConsoleRepository::class)
  */
-class Consoles
+class Console
 {
     /**
      * @ORM\Id
@@ -25,13 +25,13 @@ class Consoles
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Games::class, mappedBy="Consoles")
+     * @ORM\ManyToMany(targetEntity=Game::class, mappedBy="Console")
      */
-    private $games;
+    private $game;
 
     public function __construct()
     {
-        $this->games = new ArrayCollection();
+        $this->game = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -52,26 +52,26 @@ class Consoles
     }
 
     /**
-     * @return Collection|Games[]
+     * @return Collection|Game[]
      */
-    public function getGames(): Collection
+    public function getGame(): Collection
     {
-        return $this->games;
+        return $this->game;
     }
 
-    public function addGame(Games $game): self
+    public function addGame(Game $game): self
     {
-        if (!$this->games->contains($game)) {
-            $this->games[] = $game;
+        if (!$this->game->contains($game)) {
+            $this->game[] = $game;
             $game->addConsole($this);
         }
 
         return $this;
     }
 
-    public function removeGame(Games $game): self
+    public function removeGame(Game $game): self
     {
-        if ($this->games->removeElement($game)) {
+        if ($this->game->removeElement($game)) {
             $game->removeConsole($this);
         }
 

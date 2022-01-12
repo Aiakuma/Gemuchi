@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\GamesRepository;
+use App\Repository\GameRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=GamesRepository::class)
+ * @ORM\Entity(repositoryClass=GameRepository::class)
  */
-class Games
+class Game
 {
     /**
      * @ORM\Id
@@ -37,7 +37,7 @@ class Games
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $authors;
+    private $author;
 
     /**
      * @ORM\Column(type="text")
@@ -55,29 +55,29 @@ class Games
     private $picture;
 
     /**
-     * @ORM\OneToOne(targetEntity=Notes::class, inversedBy="games", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Note::class, inversedBy="game", cascade={"persist", "remove"})
      */
-    private $Notes;
+    private $Note;
 
     /**
-     * @ORM\OneToOne(targetEntity=Tests::class, inversedBy="games", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Test::class, inversedBy="game", cascade={"persist", "remove"})
      */
-    private $Tests;
+    private $Test;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Categories::class, inversedBy="games")
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="game")
      */
-    private $Categories;
+    private $Category;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Consoles::class, inversedBy="games")
+     * @ORM\ManyToMany(targetEntity=Console::class, inversedBy="game")
      */
-    private $Consoles;
+    private $Console;
 
     public function __construct()
     {
-        $this->Categories = new ArrayCollection();
-        $this->Consoles = new ArrayCollection();
+        $this->Category = new ArrayCollection();
+        $this->Console = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -121,14 +121,14 @@ class Games
         return $this;
     }
 
-    public function getAuthors(): ?string
+    public function getAuthor(): ?string
     {
-        return $this->authors;
+        return $this->author;
     }
 
-    public function setAuthors(string $authors): self
+    public function setAuthor(string $author): self
     {
-        $this->authors = $authors;
+        $this->author = $author;
 
         return $this;
     }
@@ -169,74 +169,74 @@ class Games
         return $this;
     }
 
-    public function getNotes(): ?Notes
+    public function getNote(): ?Note
     {
-        return $this->Notes;
+        return $this->Note;
     }
 
-    public function setNotes(?Notes $Notes): self
+    public function setNote(?Note $Note): self
     {
-        $this->Notes = $Notes;
+        $this->Note = $Note;
 
         return $this;
     }
 
-    public function getTests(): ?Tests
+    public function getTest(): ?Test
     {
         return $this->Tests;
     }
 
-    public function setTests(?Tests $Tests): self
+    public function setTest(?Test $Test): self
     {
-        $this->Tests = $Tests;
+        $this->Test = $Test;
 
         return $this;
     }
 
     /**
-     * @return Collection|Categories[]
+     * @return Collection|Category[]
      */
-    public function getCategories(): Collection
+    public function getCategory(): Collection
     {
-        return $this->Categories;
+        return $this->Category;
     }
 
-    public function addCategory(Categories $category): self
+    public function addCategory(Category $category): self
     {
-        if (!$this->Categories->contains($category)) {
-            $this->Categories[] = $category;
+        if (!$this->Category->contains($category)) {
+            $this->Category[] = $category;
         }
 
         return $this;
     }
 
-    public function removeCategory(Categories $category): self
+    public function removeCategory(Category $category): self
     {
-        $this->Categories->removeElement($category);
+        $this->Category->removeElement($category);
 
         return $this;
     }
 
     /**
-     * @return Collection|Consoles[]
+     * @return Collection|Console[]
      */
-    public function getConsoles(): Collection
+    public function getConsole(): Collection
     {
-        return $this->Consoles;
+        return $this->Console;
     }
 
-    public function addConsole(Consoles $console): self
+    public function addConsole(Console $console): self
     {
-        if (!$this->Consoles->contains($console)) {
-            $this->Consoles[] = $console;
+        if (!$this->Console->contains($console)) {
+            $this->Console[] = $console;
         }
 
         return $this;
     }
 
-    public function removeConsole(Consoles $console): self
+    public function removeConsole(Console $console): self
     {
-        $this->Consoles->removeElement($console);
+        $this->Console->removeElement($console);
 
         return $this;
     }

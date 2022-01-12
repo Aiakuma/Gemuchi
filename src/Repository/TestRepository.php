@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Tests;
+use App\Entity\Test;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Tests|null find($id, $lockMode = null, $lockVersion = null)
- * @method Tests|null findOneBy(array $criteria, array $orderBy = null)
- * @method Tests[]    findAll()
- * @method Tests[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Test|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Test|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Test[]    findAll()
+ * @method Test[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TestsRepository extends ServiceEntityRepository
+class TestRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Tests::class);
+        parent::__construct($registry, Test::class);
     }
 
     // /**
-    //  * @return Tests[] Returns an array of Tests objects
+    //  * @return Test[] Returns an array of Test objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class TestsRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Tests
+    public function findOneBySomeField($value): ?Test
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')
