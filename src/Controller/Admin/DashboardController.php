@@ -8,6 +8,8 @@ use App\Entity\Game;
 use App\Entity\Note;
 use App\Entity\Test;
 use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -21,7 +23,7 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-        return parent::index();
+        return $this->render('bundles/easyAdminBundle/welcome.html.twig');
     }
 
     public function configureDashboard(): Dashboard
@@ -32,12 +34,15 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Category', 'fas fa-user', Category::class);
-        yield MenuItem::linkToCrud('Console', 'fas fa-user', Console::class);
-        yield MenuItem::linkToCrud('Game', 'fas fa-user', Game::class);
-        yield MenuItem::linkToCrud('Note', 'fas fa-user', Note::class);
-        yield MenuItem::linkToCrud('Test', 'fas fa-user', Test::class);
-        yield MenuItem::linkToCrud('User', 'fas fa-user', User::class);
+        yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
+        yield MenuItem::linkToCrud('Administrateur', 'fas fa-user', User::class);
+        yield MenuItem::linkToCrud('Catégories', 'fas fa-', Category::class);
+        yield MenuItem::linkToCrud('Consoles', 'fas fa-', Console::class);
+        yield MenuItem::linkToCrud('Jeux', 'fas fa-star', Game::class);
+        yield MenuItem::linkToCrud('Noes', 'fas fa-', Note::class);
+        yield MenuItem::linkToCrud('Tests', 'fas fa-', Test::class);
+        
     }
+
+
 }
