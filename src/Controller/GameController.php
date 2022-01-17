@@ -10,11 +10,13 @@ use App\Repository\CategoryRepository;
 use App\Repository\ConsoleRepository;
 
 use App\Entity\Game; 
-
+/**
+     * @Route("/tests")
+     */
 class GameController extends AbstractController
 {
     /**
-     * @Route("/game", name="game")
+     * @Route("/", name="index_game")
      */
     public function index(GameRepository $GameRepository, CategoryRepository $categoryRepository,ConsoleRepository $consoleRepository): Response
     {

@@ -3,39 +3,61 @@
 {% block title %}Tests{% endblock %}
 
 {% block body %}
-<div class="container container-tests w-75">
+<div class="container container-tests ">
     <h1 class="text-center py-4">Tests</h1>
-    <div class="filtre px-5 py-4 mb-5 text-dark mx-5">
-        <h2 class="mb-3">Filtrer : </h2>
-        <div class= " justify-content-center row row-cols-auto">
+    <div class="filtre px-3 py-3 px-md-5 py-md-4 mb-4 text-dark">
+        <h2 class="h2-tests mb-3">Filtrer : </h2>
+        <div class= "d-flex flex-nowrap justify-content-center row row-cols-auto">
             <div class="dropdown col mb-2">
-                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="drop btn btn-secondary btn-sm dropdown-toggle px-lg-3 py-lg-2 px-xl-4 py-xl-2" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                     Platforme
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">PC</button></li>
+                    <li><button class="dropdown-item" type="button">Playstation</button></li>
+                    <li><button class="dropdown-item" type="button">Xbox</button></li>
+                    <li><button class="dropdown-item" type="button">Switch</button></li>
+                    <li><button class="dropdown-item" type="button">DS</button></li>
                     <li><button class="dropdown-item" type="button">3DS</button></li>
-                    <li><button class="dropdown-item" type="button">XBOX</button></li>
+                    <li><button class="dropdown-item" type="button">PC</button></li>
                 </ul>
             </div>
              <div class="dropdown col mb-2">
-                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary btn-sm dropdown-toggle px-lg-3 py-lg-2 px-xl-4 py-xl-2" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                     Genre
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">PC</button></li>
-                    <li><button class="dropdown-item" type="button">3DS</button></li>
-                    <li><button class="dropdown-item" type="button">XBOX</button></li>
+                    <li><button class="dropdown-item" type="button">Comédie</button></li>
+                    <li><button class="dropdown-item" type="button">Drame</button></li>
+                    <li><button class="dropdown-item" type="button">Comédie dramatique</button></li>
+                    <li><button class="dropdown-item" type="button">Science-fiction</button></li>
+                    <li><button class="dropdown-item" type="button">Policier</button></li>
+                    <li><button class="dropdown-item" type="button">Western</button></li>
+                    <li><button class="dropdown-item" type="button">Horreur</button></li>
+                    <li><button class="dropdown-item" type="button">Conte</button></li>
+                    <li><button class="dropdown-item" type="button">Fantaisie</button></li>
+                    <li><button class="dropdown-item" type="button">Historique</button></li>
                 </ul>
             </div>
              <div class="dropdown col mb-2">
-                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle btn-sm px-lg-3 py-lg-2 px-xl-4 py-xl-2" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                     Catégorie
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">PC</button></li>
-                    <li><button class="dropdown-item" type="button">3DS</button></li>
-                    <li><button class="dropdown-item" type="button">XBOX</button></li>
+                    <li><button class="dropdown-item" type="button">Platforme</button></li>
+                    <li><button class="dropdown-item" type="button">Stratégie</button></li>
+                    <li><button class="dropdown-item" type="button">Puzzle</button></li>
+                    <li><button class="dropdown-item" type="button">Combat</button></li>
+                    <li><button class="dropdown-item" type="button">Beat them up</button></li>
+                    <li><button class="dropdown-item" type="button">Shoot them up</button></li>
+                    <li><button class="dropdown-item" type="button">FPS</button></li>
+                    <li><button class="dropdown-item" type="button">Jeu de rôle</button></li>
+                    <li><button class="dropdown-item" type="button">JRPG</button></li>
+                    <li><button class="dropdown-item" type="button">Aventure</button></li>
+                    <li><button class="dropdown-item" type="button">Visual-novel</button></li>
+                    <li><button class="dropdown-item" type="button">Gestion</button></li>
+                    <li><button class="dropdown-item" type="button">Voxel</button></li>
+                    <li><button class="dropdown-item" type="button">Infiltration</button></li>
+                    <li><button class="dropdown-item" type="button">Bac à sable</button></li>
                 </ul>
             </div>
         </div>
@@ -43,25 +65,26 @@
     </div>
     <div class="justify-content-lg-center ">
         {% for game in games %}
-            <div class="card mb-3 shadow-lg mx-5">
-                <div class="row g-0 ">
+            <div class="card mb-3 shadow-lg ">
+                <div class="row g-0 d-flex justify-content-center align-items-center">
                     <div class="col-md-6">
-                    <img class="img-fluid rounded-start" src="{{ game.picture }}" alt="image">
+                    <img class="img-fluid rounded" src="{{ game.picture }}" alt="image">
                 </div>
                 <div class="col-md-6">
                     <div class="card-body">
                         <h2 class="card-title">{{ game.name }}</h2>
                         <span></span>
                         <p class="card-text">{{ game.resume }}</p>
-                        {#<div>
-                            {% for console in game.consoles %}
-                                <span> {{ console.name }}</span>
+                        <div id="line"></div>
+                        <div class="d-flex justify-content-between mt-3">
+                            {% for console in game.console %}
+                                <span id="console"> {{ console.name }}</span>
                             {% endfor %} 
-                            {% for category in game.categories %}
-                                <div> {{ category.name }}</div>
+                            {% for category in game.category %}
+                                <button type="button" class="btn btn-category btn-sm btn-info fs-6 px-3">{{ category.name }}</button>
                             {% endfor %}
                         </div>
-                        <a href="{{ path('test_view', { id: game.id }) }}"></a>#}
+                        {#<a href="{{ path('test_view', { id: game.id }) }}"></a>#}
                     </div>
                     
                 </div> 
@@ -71,7 +94,6 @@
 
             {% endfor %}
     </div>
-
 
 </div>
 {% endblock %}
