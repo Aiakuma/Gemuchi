@@ -9,7 +9,7 @@
         <h2 class="h2-tests mb-3">Filtrer : </h2>
         <div class= "d-flex flex-nowrap justify-content-center row row-cols-auto">
             <div class="dropdown col mb-2">
-                <button class="drop btn btn-secondary btn-sm dropdown-toggle px-lg-3 py-lg-2 px-xl-4 py-xl-2" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="drop btn btn-secondary btn-sm dropdown-toggle px-sm-3 py-sm-2 px-xl-4 py-xl-2" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                     Platforme
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -22,7 +22,7 @@
                 </ul>
             </div>
              <div class="dropdown col mb-2">
-                <button class="btn btn-secondary btn-sm dropdown-toggle px-lg-3 py-lg-2 px-xl-4 py-xl-2" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary btn-sm dropdown-toggle  px-sm-3 py-sm-2 px-xl-4 py-xl-2" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                     Genre
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -39,7 +39,7 @@
                 </ul>
             </div>
              <div class="dropdown col mb-2">
-                <button class="btn btn-secondary dropdown-toggle btn-sm px-lg-3 py-lg-2 px-xl-4 py-xl-2" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle btn-sm  px-sm-3 py-sm-2 px-xl-4 py-xl-2" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                     Catégorie
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -76,12 +76,12 @@
                         <span></span>
                         <p class="card-text">{{ game.resume }}</p>
                         <div id="line"></div>
-                        <div class="d-flex justify-content-between mt-3">
+                        <div class="d-flex justify-content-between mt-2">
                             {% for console in game.console %}
                                 <span id="console"> {{ console.name }}</span>
                             {% endfor %} 
                             {% for category in game.category %}
-                                <button type="button" class="btn btn-category btn-sm btn-info fs-6 px-3">{{ category.name }}</button>
+                                <button type="button" class="btn-category px-lg-2 py-lg-1">{{ category.name }}</button>
                             {% endfor %}
                         </div>
                         {#<a href="{{ path('test_view', { id: game.id }) }}"></a>#}
@@ -94,6 +94,6 @@
 
             {% endfor %}
     </div>
-
+    
 </div>
 {% endblock %}

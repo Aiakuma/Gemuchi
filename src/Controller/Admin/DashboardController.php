@@ -10,11 +10,19 @@ use App\Entity\Test;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
+
 
 class DashboardController extends AbstractDashboardController
 {
@@ -38,11 +46,13 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Administrateur', 'fas fa-user', User::class);
         yield MenuItem::linkToCrud('Catégories', 'fas fa-', Category::class);
         yield MenuItem::linkToCrud('Consoles', 'fas fa-', Console::class);
-        yield MenuItem::linkToCrud('Jeux', 'fas fa-star', Game::class);
-        yield MenuItem::linkToCrud('Noes', 'fas fa-', Note::class);
+        yield MenuItem::linkToCrud('Jeux', 'fas fa-', Game::class);
         yield MenuItem::linkToCrud('Tests', 'fas fa-', Test::class);
+        yield MenuItem::linkToCrud('Notes', 'fas fa-', Note::class);
         
     }
 
+ }
 
-}
+
+

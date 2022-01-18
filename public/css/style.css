@@ -1,3 +1,5 @@
+/*** TESTS **/ 
+
 #dropdownMenu2,.btn-submit{
     background-color:#BC002D;
     border: #BC002D;
@@ -26,11 +28,24 @@
 }
 
 
+
+
 .btn-category{
     background-color: #BC002D;
     border: #BC002D;
     color: #ffffff;
     border-radius: 8px;
+    text-transform: uppercase;
+}
+
+
+.btn-category,#console{font-size: 12px;}
+.card-title{font-size: 22px;}
+.card-text{font-size: 14px;}
+
+@media all and (min-width:576px) {
+    .btn-category,#console{font-size: 14px;} 
+
 }
 #line{
     border-bottom: 1px solid #3F4253;
@@ -53,6 +68,12 @@
 
 }
 
+@media all and (min-width: 992px) { 
+    .card-title{font-size: 26px;}
+    .card-text{font-size: 16px;}
+
+}
+
 
 @media screen and (min-width:1200px) {
     .h2-tests{
@@ -60,13 +81,13 @@
     } 
 }
 
-
+/*** CONTACT **/ 
 .form{margin-bottom: 100px;}
 .btn-submit{
     border-radius: 15px;
 }
 
-.btn-submit:hover,.btn-category:hover {
+.btn-submit:hover{
     background-color: #BC002D;
     color: #ffffff;
 }
@@ -88,6 +109,5 @@ label{
     border-radius: 0px;
     color: #ffffff;
 }
-
 
 
