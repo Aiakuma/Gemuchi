@@ -122,6 +122,16 @@ class Note
      */
     private $game;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $note_general;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nom_jeu;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -385,6 +395,30 @@ class Note
         }
 
         $this->game = $game;
+
+        return $this;
+    }
+
+    public function getNoteGeneral(): ?float
+    {
+        return $this->note_general;
+    }
+
+    public function setNoteGeneral(float $note_general): self
+    {
+        $this->note_general = $note_general;
+
+        return $this;
+    }
+
+    public function getNomJeu(): ?string
+    {
+        return $this->nom_jeu;
+    }
+
+    public function setNomJeu(string $nom_jeu): self
+    {
+        $this->nom_jeu = $nom_jeu;
 
         return $this;
     }
