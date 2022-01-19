@@ -63,7 +63,7 @@
         </div>
         
     </div>
-    <div class="justify-content-lg-center ">
+    <div class="cards justify-content-lg-center ">
         {% for game in games %}
             <div class="card mb-3 shadow-lg ">
                 <div class="row g-0 d-flex justify-content-center align-items-center">
@@ -81,7 +81,7 @@
                                 <span id="console"> {{ console.name }}</span>
                             {% endfor %} 
                             {% for category in game.category %}
-                                <button type="button" class="btn-category px-lg-2 py-lg-1">{{ category.name }}</button>
+                                <button type="button" id="category" class="btn-category px-lg-2 py-lg-1">{{ category.name }}</button>
                             {% endfor %}
                         </div>
                         {#<a href="{{ path('test_view', { id: game.id }) }}"></a>#}

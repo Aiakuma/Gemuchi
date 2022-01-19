@@ -22,6 +22,8 @@
 .t_Nunito {font-family: "nunito-medium";}
 .nav-link {color:#FFF}
 
+h1, h2{font-family: "Flood"; }
+body,footer,header{font-family: "nunito-medium";}
 
 /*Taille*/
 .XS {
@@ -54,6 +56,7 @@
 .h2-tests{
     font-size: 18px;
     font-weight: 400;
+    font-family: "nunito-medium";
 }
 
 .dropdown{
@@ -193,3 +196,38 @@ label{
     box-shadow: #BC002D;
 }
  **/
+
+ /** scroll up **/
+ #myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: 2px solid #BC002D;
+    outline: none;
+    background-color: #F0F1F4;
+    color: #000;
+    cursor: pointer;
+    padding: 0 6px;
+    border-radius: 50%;
+  }
+  
+  #myBtn:hover {
+    background-color: #BC002D;
+  }
+
+.icon-up{
+    font-size: 30px;
+}
+
+
+
+/** NAV **/
+.nav-link:hover{color: #BC002D;} 
+
+/** footer  **/ 
+
+.s-medias{
+    border-top: 1px solid #3F4253;
+}
