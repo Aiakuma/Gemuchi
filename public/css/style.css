@@ -1,0 +1,195 @@
+
+/* Colors */
+.japanRed {background-color: #BC002D;}
+.purpleGrey {background-color: #3f4253;}
+.strongGrey{background-color: #707070;}
+.lightGrey{background-color:#C2C6D9;}
+.lightWhite{background-color: #F0F1F4;}
+.fullWhite{background-color: #FFF;}
+.fullBlack {background-color: #000;}
+
+/* Typography */
+@font-face {
+    font-family: "flood";
+    src: url("../typography/Flood.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "nunito-medium";
+    src: url("../typography/Nunito-Medium.ttf") format("truetype");
+}
+.t_Flood {font-family: "Flood";}
+.t_Nunito {font-family: "nunito-medium";}
+.nav-link {color:#FFF}
+
+
+/*Taille*/
+.XS {
+    width : 5vh;
+    height : 5vh;
+}
+
+.S {
+    width : 8vh;
+    height : 8vh;
+}
+
+.M {
+    width : 12vh;
+    height : 12vh;}
+
+/*** TESTS **/ 
+
+#dropdownMenu2,.btn-submit{
+    background-color:#BC002D;
+    border: #BC002D;
+    border-radius: 0;
+}
+
+
+.filtre{
+    background-color:#C2C6D9;
+}
+
+.h2-tests{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.dropdown{
+    padding-left: 5px;
+    padding-right: 0px;
+
+}
+#console{
+    text-transform: uppercase;
+    font-weight: 500;
+
+}
+
+
+
+
+.btn-category{
+    background-color: #BC002D;
+    border: #BC002D;
+    color: #ffffff;
+    border-radius: 8px;
+    text-transform: uppercase;
+}
+
+
+.btn-category,#console{font-size: 12px;}
+.card-title{font-size: 22px;}
+.card-text{font-size: 14px;}
+
+@media all and (min-width:576px) {
+    .btn-category,#console{font-size: 14px;} 
+
+}
+#line{
+    border-bottom: 1px solid #3F4253;
+}
+
+
+
+
+@media all and (min-width: 768px) { 
+    .container-tests{
+        width: 75%
+    }
+    .h2-tests{
+        font-size: 30px;
+    }
+    .btn{
+        font-size: 20px;
+    }
+    .dropdown{padding: 0 10px;}
+
+}
+
+@media all and (min-width: 992px) { 
+    .card-title{font-size: 26px;}
+    .card-text{font-size: 16px;}
+
+}
+
+
+@media screen and (min-width:1200px) {
+    .h2-tests{
+        margin-left: 130px;
+    } 
+}
+
+/*** CONTACT **/ 
+.form{margin-bottom: 100px;}
+.btn-submit{
+    border-radius: 15px;
+}
+
+.btn-submit:hover{
+    background-color: #BC002D;
+    color: #ffffff;
+}
+
+
+label{
+    font-weight: 500;
+}
+
+.input,.message{
+    border: 2px solid #3F4253 ;
+}
+
+.message{
+    border-radius: 0px;
+}
+.select{
+    background-color: #3F4253;
+    border-radius: 0px;
+    color: #ffffff;
+}
+
+
+.content{
+    height: 100vh;
+    background-color: #3F4253;
+    
+}
+
+.h1-login{color: #3F4253;}
+
+.form-login{
+    background-color: #f0f1f4;
+    border: 2px solid #BC002D;
+    width:30%;
+}
+
+#inputEmail, #inputPassword{
+    border: 1px solid #3F4253;
+    border-radius: 0px;
+}
+
+.btn-login{
+    background-color: #f0f1f4;
+    color: #3F4253;
+    border: 1px solid #BC002D;
+    font-size: 16px;
+    border-radius: 0px;
+    align-self: center;
+    box-shadow: #BC002D;
+    width: 100%;
+}
+
+.btn-login:hover{
+    background-color: #BC002D;
+    border: 1px solid #BC002D;
+}
+ 
+/** PAS bon 
+.btn-login:active{
+    background-color: #BC002D;
+    border: 1px solid #BC002D;
+    box-shadow: #BC002D;
+}
+ **/
