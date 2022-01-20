@@ -7,7 +7,6 @@ use App\Entity\Console;
 use App\Entity\Game;
 use App\Entity\Note;
 use App\Entity\Test;
-use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
@@ -45,8 +44,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
 
         yield MenuItem::section('Tests');
-        yield MenuItem::linkToCrud('Tous les test', 'fas fa-', Test::class);
+        yield MenuItem::linkToCrud('Tous les tests', 'fas fa-', Test::class);
         yield MenuItem::linkToCrud('Ajouter un test', 'fas fa-', Test::class)->setAction('new');
+        yield MenuItem::linkToCrud('Toutes les notes', 'fas fa-', Note::class);
+        yield MenuItem::linkToCrud('Ajouter une note', 'fas fa-', Note::class)->setAction('new');
         
         yield MenuItem::section('Catégories');
         yield MenuItem::linkToCrud('Toutes les catégories', 'fas fa-', Category::class);
@@ -59,10 +60,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Jeux');
         yield MenuItem::linkToCrud('Tous les jeux', 'fas fa-', Game::class);
         yield MenuItem::linkToCrud('Ajouter un jeu', 'fas fa-', Game::class)->setAction('new');
-
-
-        //yield MenuItem::linkToCrud('Notes', 'fas fa-', Note::class);
-       // yield MenuItem::linkToCrud('Administrateur', 'fas fa-user', User::class);
         
     }
 
