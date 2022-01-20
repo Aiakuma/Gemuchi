@@ -46,6 +46,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Tests');
         yield MenuItem::linkToCrud('Tous les tests', 'fas fa-', Test::class);
         yield MenuItem::linkToCrud('Ajouter un test', 'fas fa-', Test::class)->setAction('new');
+
+        yield MenuItem::section('Notes');
         yield MenuItem::linkToCrud('Toutes les notes', 'fas fa-', Note::class);
         yield MenuItem::linkToCrud('Ajouter une note', 'fas fa-', Note::class)->setAction('new');
         
