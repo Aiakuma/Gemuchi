@@ -16,7 +16,7 @@ use App\Entity\Game;
 class GameController extends AbstractController
 {
     /**
-     * @Route("/", name="index_game")
+     * @Route("/", name="index_tests")
      */
     public function index(GameRepository $GameRepository, CategoryRepository $categoryRepository,ConsoleRepository $consoleRepository): Response
     {

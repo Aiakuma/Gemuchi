@@ -1,3 +1,5 @@
+<<<<<<< Updated upstream
+=======
 //Get the button
 var mybutton = document.getElementById("myBtn");
 
@@ -19,7 +21,7 @@ function topFunction() {
 }
 
 /** FILTRE */
-
+/** 
 let menu = document.querySelectorAll('.dropdown-menu').children;
 let cards = document.querySelectorAll('.cards').children;
 let console = document.getElementById('console');
@@ -47,3 +49,12 @@ for(let i=0; i < menu.length ;i++){
     }
   }
 }
+*/
+/** menu burger */
+
+/* CAROUSEL */
+
+$(document).ready(function(){
+  $(".owl-carousel").owlCarousel();
+})
+>>>>>>> Stashed changes

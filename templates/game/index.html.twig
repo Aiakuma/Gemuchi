@@ -3,7 +3,7 @@
 {% block title %}Tests{% endblock %}
 
 {% block body %}
-<div class="container container-tests ">
+<div class="container container-tests mb-5 ">
     <h1 class="text-center py-4">Tests</h1>
     <div class="filtre px-3 py-3 px-md-5 py-md-4 mb-4 text-dark">
         <h2 class="h2-tests mb-3">Filtrer : </h2>
@@ -63,13 +63,14 @@
         </div>
         
     </div>
-    <div class="cards justify-content-lg-center ">
+    <div class="justify-content-lg-center ">
         {% for game in games %}
             <div class="card mb-3 shadow-lg ">
-                <div class="row g-0 d-flex justify-content-center align-items-center">
-                    <div class="col-md-6">
-                    <img class="img-fluid rounded" src="{{ game.picture }}" alt="image">
-                </div>
+                <div class=" row g-0 d-flex justify-content-center align-items-center">
+                    <div class="container-image col-md-6">
+                        <img class="image img-fluid rounded" src="{{ game.picture }}" alt="image">
+                    </div>
+                    
                 <div class="col-md-6">
                     <div class="card-body">
                         <h2 class="card-title">{{ game.name }}</h2>
@@ -78,10 +79,10 @@
                         <div id="line"></div>
                         <div class="d-flex justify-content-between mt-2">
                             {% for console in game.console %}
-                                <span id="console"> {{ console.name }}</span>
+                                <span id="console" class="fw-bold"> {{ console.name }}</span>
                             {% endfor %} 
                             {% for category in game.category %}
-                                <button type="button" id="category" class="btn-category px-lg-2 py-lg-1">{{ category.name }}</button>
+                                <button type="button" class="btn-category px-lg-2 py-lg-1">{{ category.name }}</button>
                             {% endfor %}
                         </div>
                         {#<a href="{{ path('test_view', { id: game.id }) }}"></a>#}
@@ -94,6 +95,12 @@
 
             {% endfor %}
     </div>
-    
+    <div class="owl-carousel">
+        <div class="bg-info">your content</div>
+        <div class="bg-info">your content</div>
+        <div class="bg-info">your content</div>
+        <div class="bg-info">your content</div>
+        <div class="bg-info">your content</div>
+    </div>
 </div>
 {% endblock %}

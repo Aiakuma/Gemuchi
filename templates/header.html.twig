@@ -1,54 +1,62 @@
-<nav class="purpleGrey navbar fixed-top navbar-expand-md">
-    <div class="container">
-        <a href="{{ path('home') }}" class="navbar-brand mb-0 h1">
-            <img src="{{ asset('/images/Logo_Japon.svg')}}" alt="logo" class="d-inline-block align-top" width="50" height="50">
-        </a> 
-        <button type="button" data-bs-toggle="collapse" data-bs-target="#nav-bar" class="navbar-toggler"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-        >
-            <i class="fas fa-bars"></i>
-        </button>
-        <form class=" input-group w-auto d-none d-md-flex">
-            <input
-                type="search"
-                class="form-control rounded"
-                placeholder="Rechercher"
-                aria-label="Search"
-                aria-describedby="search-addon"
-            />
-            <span class="input-group-text border-0 d-flex" id="search-addon">
-                <i class="fas fa-search"></i
-        >
-            </span>
-        </form>
-        <div class="collapse navbar-collapse" id="nav-bar">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item text-white">
-                    <a href="{{ path('home') }}" class="nav-link">
-                        Accueil
-                    </a>
-                </li>
-                <li class="nav-item text-white">
-                    <a href="{{ path('about') }}" class="nav-link">
-                        A propos
-                    </a>
-                </li>
-                <li class="nav-item text-white">
-                    <a href="{{ path('index_game') }}" class="nav-link">
-                        Tests
-                    </a>
-                </li>
-                <li class="nav-item active">
-                    <a href="{{ path('contact') }}" class="nav-link">
-                        Contact
-                    </a>
-                </li>
-            </ul>
-        </div> 
-    </div>  
-</nav>
+<header>
+    <nav class="purpleGrey navbar fixed-top navbar-expand-md">
+        <div class="container-lg gap-md-5">
+            <div class="logo">
+                <a href="{{ path('home') }}" class="navbar-brand mb-0 h1">
+                    <img src="{{ asset('/images/Logo_Japon.svg')}}" alt="logo" class="d-inline-block align-top" width="50" height="50">
+                </a> 
+            </div> 
+            <div class="pseudo text-white text-center d-flex d-md-none t_Flood">Gemuchi</div>
+             <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler d-flex flex-column justify-content-around  d-md-none collapsed"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="toggler-icon top-bar"></span>
+                <span class="toggler-icon middle-bar"></span>
+                <span class="toggler-icon bottom-bar"></span>
+            </button>
+            
+            <form class="input-group w-auto d-none d-md-flex">
+                <input
+                    type="search"
+                    class="form-control rounded "
+                    placeholder="Rechercher"
+                    aria-label="Search"
+                    aria-describedby="search-addon"
+                />
+                <span class="input-group-text border-0 d-flex bg-light" id="search-addon">
+                    <i class="fas fa-search "></i>
+                </span>
+            </form>
+            <div class="collapse navbar-collapse"  id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item text-white">
+                        <a href="{{ path('home') }}" class="nav-link">
+                            Accueil
+                        </a>
+                    </li>
+                    <li class="nav-item text-white">
+                        <a href="{{ path('about') }}" class="nav-link">
+                            A propos
+                        </a>
+                    </li>
+                    <li class="nav-item text-white">
+                        <a href="{{ path('index_tests') }}" class="nav-link">
+                            Tests
+                        </a>
+                    </li>
+                    <li class="nav-item text-white">
+                        <a href="{{ path('contact') }}" class="nav-link">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </div> 
+        </div>
+    </nav>
+</header>
+
     
 
 
