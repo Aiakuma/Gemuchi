@@ -7,8 +7,8 @@
 
 </style>
 
-<main>
-    <h1 class="t_Flood text-uppercase">Accueil</h1>
+<main class="px-5">
+    <h1 class="t_Flood text-uppercase text-center py-4">Accueil</h1>
     <p class="t_Nunito">Bienvenu dans l'antichambre du temple de Gemuchi, Si vous êtes ici, c'est que vous êtes en quête de conseil, à la recherche de votre prochaine aventure vidéoludique. Si vous le désirez, je suis certainement en train de tester un jeu en ce moment même autour d'un thé sur Twitch. Autrement vous pouvez consulter un de mes tests précédent mis par écrit.</p>
     <div> <div>
     <div>
@@ -17,13 +17,13 @@
             <div class="card mb-3 shadow-lg ">
                 <div class="row g-0 d-flex justify-content-center align-items-center">
                     <div class="col-md-6">
-                    <img class="img-fluid rounded" src="{{ game.picture }}" alt="image">
+                    <img class="img-fluid rounded thumb" src="{{ game.picture }}" alt="image">
                 </div>
                 <div class="col-md-6">
                     <div class="card-body">
-                        <h2 class="card-title">{{ game.name }}</h2>
+                        <h2 class="card-title t_Flood">{{ game.name }}</h2>
                         <span></span>
-                        <p class="card-text">{{ game.resume }}</p>
+                        <p class="card-text t_Nunito">{{ game.resume }}</p>
                         <div id="line"></div>
                         <div class="d-flex justify-content-between mt-2">
                             {% for console in game.console %}

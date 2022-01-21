@@ -16,7 +16,7 @@ class HomeController extends AbstractController
      */
     public function index(GameRepository $GameRepository, CategoryRepository $categoryRepository,ConsoleRepository $consoleRepository): Response
     {
-        $games = $GameRepository->findBy([], ['id' => 'DESC']);
+        $games = $GameRepository->findBy([], ['id' => 'DESC'], 4);
         $category = $categoryRepository->findAll();
         $consoles = $consoleRepository->findAll();
 

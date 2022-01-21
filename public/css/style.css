@@ -46,3 +46,5 @@
 .M {
     width : 12vh;
     height : 12vh;}
+
+.thumb {clip-path : inset(0,50%,0,0)}
