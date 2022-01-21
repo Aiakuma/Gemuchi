@@ -67,6 +67,11 @@ class Test
      */
     private $game;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nom_jeu;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -198,6 +203,18 @@ class Test
         }
 
         $this->game = $game;
+
+        return $this;
+    }
+
+    public function getNomJeu(): ?string
+    {
+        return $this->nom_jeu;
+    }
+
+    public function setNomJeu(string $nom_jeu): self
+    {
+        $this->nom_jeu = $nom_jeu;
 
         return $this;
     }
