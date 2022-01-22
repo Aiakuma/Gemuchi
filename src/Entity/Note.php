@@ -75,27 +75,12 @@ class Note
     /**
      * @ORM\Column(type="float")
      */
-    private $environnement;
-
-    /**
-     * @ORM\Column(type="float")
-     */
     private $gestion_difficulte;
 
     /**
      * @ORM\Column(type="float")
      */
     private $efficacite_interface;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $cout_ressource;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $poid_ressource;
 
     /**
      * @ORM\Column(type="float")
@@ -121,6 +106,16 @@ class Note
      * @ORM\OneToOne(targetEntity=Game::class, mappedBy="Note", cascade={"persist", "remove"})
      */
     private $game;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $synergie;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $ressource_materiel;
 
     public function getId(): ?int
     {
@@ -259,18 +254,6 @@ class Note
         return $this;
     }
 
-    public function getEnvironnement(): ?float
-    {
-        return $this->environnement;
-    }
-
-    public function setEnvironnement(float $environnement): self
-    {
-        $this->environnement = $environnement;
-
-        return $this;
-    }
-
     public function getGestionDifficulte(): ?float
     {
         return $this->gestion_difficulte;
@@ -291,30 +274,6 @@ class Note
     public function setEfficaciteInterface(float $efficacite_interface): self
     {
         $this->efficacite_interface = $efficacite_interface;
-
-        return $this;
-    }
-
-    public function getCoutRessource(): ?float
-    {
-        return $this->cout_ressource;
-    }
-
-    public function setCoutRessource(float $cout_ressource): self
-    {
-        $this->cout_ressource = $cout_ressource;
-
-        return $this;
-    }
-
-    public function getPoidRessource(): ?float
-    {
-        return $this->poid_ressource;
-    }
-
-    public function setPoidRessource(float $poid_ressource): self
-    {
-        $this->poid_ressource = $poid_ressource;
 
         return $this;
     }
@@ -387,5 +346,34 @@ class Note
         $this->game = $game;
 
         return $this;
+    }
+
+    public function getSynergie(): ?float
+    {
+        return $this->synergie;
+    }
+
+    public function setSynergie(float $synergie): self
+    {
+        $this->synergie = $synergie;
+
+        return $this;
+    }
+
+    public function getRessourceMateriel(): ?float
+    {
+        return $this->ressource_materiel;
+    }
+
+    public function setRessourceMateriel(float $ressource_materiel): self
+    {
+        $this->ressource_materiel = $ressource_materiel;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->musique. ' '. $this->absence_bug. ' '. $this->temps_chargement. ' '. $this->bruitage. ' '. $this->originalite. ' '. $this->rendement_horaire. ' '. $this->phase_jeu. ' '. $this->charge_emotionnelle. ' '. $this->narration. ' '. $this->pertinence_parti_pris. ' '. $this->diversite_nuance. ' '. $this->gestion_difficulte. ' '. $this->efficacite_interface. ' '. $this->disponibilite. ' '. $this->message_autocritique. ' '. $this->integration_message. ' '. $this->coup_de_coeur. ' '. $this->synergie. ' '. $this->ressource_materiel;
     }
 }
