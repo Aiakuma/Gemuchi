@@ -7,7 +7,17 @@
                 </a> 
             </div> 
             <div class="pseudo text-white text-center d-flex d-md-none t_Flood">Gemuchi</div>
-             <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler d-flex flex-column justify-content-around  d-md-none collapsed"
+            <div class="d-flex align-items-center">
+                <form class="form-search w-auto">
+                <div class="input-group">
+                    <input type="search" placeholder="Rechercher" class="form-control  d-md-flex d-none">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-link"><i class="fas fa-search"></i></button>
+                    </div>
+                </div> 
+            </form>
+            
+            <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler d-flex flex-column justify-content-around  d-md-none collapsed"
                 aria-controls="navbarNav"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
@@ -16,19 +26,9 @@
                 <span class="toggler-icon middle-bar"></span>
                 <span class="toggler-icon bottom-bar"></span>
             </button>
+            </div>
             
-            <form class="input-group w-auto d-none d-md-flex">
-                <input
-                    type="search"
-                    class="form-control rounded "
-                    placeholder="Rechercher"
-                    aria-label="Search"
-                    aria-describedby="search-addon"
-                />
-                <span class="input-group-text border-0 d-flex bg-light" id="search-addon">
-                    <i class="fas fa-search "></i>
-                </span>
-            </form>
+            
             <div class="collapse navbar-collapse"  id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item text-white">
