@@ -20,7 +20,7 @@ return [
         '/contact' => [[['_route' => 'contact', '_controller' => 'App\\Controller\\ContactController::index'], null, null, null, true, false, null]],
         '/tests' => [[['_route' => 'index_game', '_controller' => 'App\\Controller\\GameController::index'], null, null, null, true, false, null]],
         '/home' => [[['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
-        '/mention/legale' => [[['_route' => 'mention_legale', '_controller' => 'App\\Controller\\MentionLegaleController::index'], null, null, null, false, false, null]],
+        '/mention_legale' => [[['_route' => 'mention_legale', '_controller' => 'App\\Controller\\MentionLegaleController::index'], null, null, null, false, false, null]],
         '/note' => [[['_route' => 'note', '_controller' => 'App\\Controller\\NoteController::index'], null, null, null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
         '/connexion' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],

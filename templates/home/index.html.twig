@@ -1,20 +1,60 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<main class="container lightWhite">
+    <h1 class="t_Flood text-uppercase text-center py-4">Accueil</h1>
+    <p class="text-accueil t_Nunito ms-auto ">Bienvenu dans l'antichambre du temple de Gemuchi, Si vous êtes ici, c'est que vous êtes en quête de conseil, à la recherche de votre prochaine aventure vidéoludique. Si vous le désirez, je suis certainement en train de tester un jeu en ce moment même autour d'un thé sur Twitch. Autrement vous pouvez consulter un de mes tests précédent mis par écrit.</p>
+    <div class="card-liveTwitch card mb-3 shadow-lg py-2 px-3 py-md-4 px-md-5">
+        <h2 class="mb-3">Twitch</h2>
+        <div class="d-flex ">
+            <div class="px-1">
+                <img class="img-fluid rounded thumb S " src="{{ asset('/images/Logo_Japon.svg')}}">
+            </div >
+            <div class=" d-flex flex-column py-1 px-1 px-md-3 ">
+                <span class="t_Nunito"><span style="color:green">&bull;</span> En Direct </span>
+                <span class="t_Nunito"> En train de jouer à : <span class="t_Flood">Stellaris</span></span>
+            </div>
+        </div>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/lkler/Desktop/Sites/Gemuchi/Gemuchi/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/lkler/Desktop/Sites/Gemuchi/Gemuchi/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="cards-home mb-5 py-4 px-4 shadow mt-5">
+        <h4 class="h4-home t_Flood text-uppercase"> Les Derniers Tests </h4>
+        <div class="row row-cols-md-2 g-2">
+            {% for game in games %}
+                <div class="card-home card p-2 d-inline gap-0">
+                    <div class="row">
+                        <div class="img-container col-4 d-flex justify-content-center align-items-center p-0">
+                            <img class="img-game img-fluid rounded w-50" src="{{ game.picture }}" alt="image">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body">
+                                <h2 class="card-title t_Flood">{{ game.name }}</h2>
+                                <div>
+                                    {% for console in game.console %}
+                                        <span id="console" class="fw-bold"> {{ console.name }}</span>
+                                    {% endfor %} 
+                                </div>
+                                <div class="mb-2">
+                                    {% for category in game.category %}
+                                        <button type="button" class="btn-category my-2 px-lg-2 py-lg-1">{{ category.name }}</button>
+                                    {% endfor %}
+                                </div> 
+                                <div id="line"></div>       
+                            </div>
+                        </div>
+                        
+                    </div>       
+                </div>
+            {% endfor %}
+        </div>
+        <div class="d-flex justify-content-end mt-3"><a class="link-tests text-decoration-none text-black mx-2" href="{{ path('index_tests') }}">Voir tous les tests</a><i class="fas fa-chevron-right py-1"></i></div>
+    </div>
+       
+</main>
 {% endblock %}
+
+
+

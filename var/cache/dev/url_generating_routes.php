@@ -21,7 +21,7 @@ return [
     'contact' => [[], ['_controller' => 'App\\Controller\\ContactController::index'], [], [['text', '/contact/']], [], [], []],
     'index_game' => [[], ['_controller' => 'App\\Controller\\GameController::index'], [], [['text', '/tests/']], [], [], []],
     'home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/home']], [], [], []],
-    'mention_legale' => [[], ['_controller' => 'App\\Controller\\MentionLegaleController::index'], [], [['text', '/mention/legale']], [], [], []],
+    'mention_legale' => [[], ['_controller' => 'App\\Controller\\MentionLegaleController::index'], [], [['text', '/mention_legale']], [], [], []],
     'note' => [[], ['_controller' => 'App\\Controller\\NoteController::index'], [], [['text', '/note']], [], [], []],
     'app_register' => [[], ['_controller' => 'App\\Controller\\RegistrationController::register'], [], [['text', '/register']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/connexion']], [], [], []],

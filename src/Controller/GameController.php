@@ -11,24 +11,9 @@ use App\Repository\ConsoleRepository;
 
 use App\Entity\Game; 
 /**
-     * @Route("/tests")
+     * @Route("/game")
      */
 class GameController extends AbstractController
 {
-    /**
-     * @Route("/", name="index_game")
-     */
-    public function index(GameRepository $GameRepository, CategoryRepository $categoryRepository,ConsoleRepository $consoleRepository): Response
-    {
-        $games = $GameRepository->findBy([], ['id' => 'DESC']);
-        $category = $categoryRepository->findAll();
-        $consoles = $consoleRepository->findAll();
-
-        return $this->render('game/index.html.twig',
-            [
-                'games' => $games,
-                'categories' => $category,
-                'consoles' => $consoles,
-            ]);
-    }
+   
 }
