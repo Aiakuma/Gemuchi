@@ -18,6 +18,7 @@
       <parameter key="MakerBundle">Symfony\Bundle\MakerBundle\MakerBundle</parameter>
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="DoctrineMigrationsBundle">Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle</parameter>
+      <parameter key="DoctrineFixturesBundle">Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle</parameter>
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
       <parameter key="TwigExtraBundle">Twig\Extra\TwigExtraBundle\TwigExtraBundle</parameter>
       <parameter key="EasyAdminBundle">EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle</parameter>
@@ -58,6 +59,10 @@
       <parameter key="DoctrineMigrationsBundle" type="collection">
         <parameter key="path">C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\doctrine\doctrine-migrations-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\MigrationsBundle</parameter>
+      </parameter>
+      <parameter key="DoctrineFixturesBundle" type="collection">
+        <parameter key="path">C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\doctrine\doctrine-fixtures-bundle</parameter>
+        <parameter key="namespace">Doctrine\Bundle\FixturesBundle</parameter>
       </parameter>
       <parameter key="SecurityBundle" type="collection">
         <parameter key="path">C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-bundle</parameter>
@@ -484,6 +489,9 @@
         <argument type="service" id=".service_locator.GNc8e5B.App\Controller\TestController"/>
       </call>
     </service>
+    <service id="App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true">
+      <tag name="doctrine.fixture.orm"/>
+    </service>
     <service id="App\Form\ContactType" class="App\Form\ContactType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -495,10 +503,6 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\ConsoleRepository" class="App\Repository\ConsoleRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
-    </service>
-    <service id="App\Repository\ContactRepository" class="App\Repository\ContactRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -2349,6 +2353,7 @@
           <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\maker-bundle\src/translations</argument>
           <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\doctrine\doctrine-bundle/translations</argument>
           <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\doctrine\doctrine-migrations-bundle/translations</argument>
+          <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\doctrine\doctrine-fixtures-bundle/translations</argument>
           <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-bundle/translations</argument>
           <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\twig\extra-bundle/translations</argument>
         </argument>
@@ -2368,6 +2373,7 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\maker-bundle\src/translations</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\doctrine\doctrine-bundle/translations</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\doctrine\doctrine-migrations-bundle/translations</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\doctrine\doctrine-fixtures-bundle/translations</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-bundle/translations</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\twig\extra-bundle/translations</argument>
           </argument>
@@ -4787,7 +4793,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.VWhYroY"/>
+      <argument type="service" id=".service_locator.vxZz8.l"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -5205,6 +5211,32 @@
       <argument type="service" id="doctrine_migrations.migrations_flattener"/>
     </service>
     <service id="doctrine.migrations.storage.table_storage" class="Doctrine\Migrations\Metadata\Storage\TableMetadataStorageConfiguration"/>
+    <service id="doctrine.fixtures_load_command" class="Doctrine\Bundle\FixturesBundle\Command\LoadDataFixturesDoctrineCommand">
+      <tag name="console.command" command="doctrine:fixtures:load"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="doctrine.fixtures.loader"/>
+      <argument type="service" id="doctrine"/>
+      <argument type="collection">
+        <argument key="default" type="service" id="doctrine.fixtures.purger.orm_purger_factory"/>
+      </argument>
+      <call method="setName">
+        <argument>doctrine:fixtures:load</argument>
+      </call>
+    </service>
+    <service id="doctrine.fixtures.loader" class="Doctrine\Bundle\FixturesBundle\Loader\SymfonyFixturesLoader">
+      <argument type="service" id="service_container"/>
+      <call method="addFixtures">
+        <argument type="collection">
+          <argument type="collection">
+            <argument key="fixture" type="service" id="App\DataFixtures\AppFixtures"/>
+            <argument key="groups" type="collection"/>
+          </argument>
+        </argument>
+      </call>
+    </service>
+    <service id="doctrine.fixtures.purger.orm_purger_factory" class="Doctrine\Bundle\FixturesBundle\Purger\ORMPurgerFactory">
+      <tag name="doctrine.fixtures.purger_factory" alias="default"/>
+    </service>
     <service id="security.authorization_checker" class="Symfony\Component\Security\Core\Authorization\AuthorizationChecker" public="true">
       <tag name="container.private" package="symfony/security-bundle" version="5.3"/>
       <argument type="service" id="security.token_storage"/>
@@ -6394,6 +6426,8 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TestController" class="App\Controller\TestController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TestController" class="App\Controller\TestController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\TestController" class="App\Controller\TestController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ContactType" class="App\Form\ContactType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ContactType" class="App\Form\ContactType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" abstract="true"/>
@@ -6402,8 +6436,6 @@
     <service id=".abstract.instanceof.App\Repository\CategoryRepository" class="App\Repository\CategoryRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ConsoleRepository" class="App\Repository\ConsoleRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ConsoleRepository" class="App\Repository\ConsoleRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ContactRepository" class="App\Repository\ContactRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\ContactRepository" class="App\Repository\ContactRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\GameRepository" class="App\Repository\GameRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\GameRepository" class="App\Repository\GameRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\NoteRepository" class="App\Repository\NoteRepository" autowire="true" abstract="true"/>
@@ -7445,12 +7477,11 @@
       <argument type="service" id="cache.doctrine.orm.default.result"/>
       <factory class="Doctrine\Common\Cache\Psr6\DoctrineProvider" method="wrap"/>
     </service>
-    <service id=".service_locator.VWhYroY" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.vxZz8.l" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\CategoryRepository" type="service_closure" id="App\Repository\CategoryRepository"/>
         <argument key="App\Repository\ConsoleRepository" type="service_closure" id="App\Repository\ConsoleRepository"/>
-        <argument key="App\Repository\ContactRepository" type="service_closure" id="App\Repository\ContactRepository"/>
         <argument key="App\Repository\GameRepository" type="service_closure" id="App\Repository\GameRepository"/>
         <argument key="App\Repository\NoteRepository" type="service_closure" id="App\Repository\NoteRepository"/>
         <argument key="App\Repository\TestRepository" type="service_closure" id="App\Repository\TestRepository"/>
@@ -8367,7 +8398,7 @@
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.02jRKEn"/>
+      <argument type="service" id=".service_locator.dtlpYFP"/>
       <argument type="collection">
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -8437,6 +8468,7 @@
         <argument key="doctrine:migrations:status">doctrine_migrations.status_command</argument>
         <argument key="doctrine:migrations:up-to-date">doctrine_migrations.up_to_date_command</argument>
         <argument key="doctrine:migrations:version">doctrine_migrations.version_command</argument>
+        <argument key="doctrine:fixtures:load">doctrine.fixtures_load_command</argument>
         <argument key="debug:firewall">security.command.debug_firewall</argument>
         <argument key="security:encode-password">security.command.user_password_encoder</argument>
         <argument key="security:hash-password">security.command.user_password_hash</argument>
@@ -8468,7 +8500,7 @@
         <argument key="make:migration">maker.auto_command.make_migration</argument>
       </argument>
     </service>
-    <service id=".service_locator.02jRKEn" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.dtlpYFP" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="console.command.about" type="service_closure" id=".console.command.about.lazy"/>
@@ -8538,6 +8570,7 @@
         <argument key="doctrine_migrations.status_command" type="service_closure" id="doctrine_migrations.status_command"/>
         <argument key="doctrine_migrations.up_to_date_command" type="service_closure" id="doctrine_migrations.up_to_date_command"/>
         <argument key="doctrine_migrations.version_command" type="service_closure" id="doctrine_migrations.version_command"/>
+        <argument key="doctrine.fixtures_load_command" type="service_closure" id="doctrine.fixtures_load_command"/>
         <argument key="security.command.debug_firewall" type="service_closure" id=".security.command.debug_firewall.lazy"/>
         <argument key="security.command.user_password_encoder" type="service_closure" id=".security.command.user_password_encoder.lazy"/>
         <argument key="security.command.user_password_hash" type="service_closure" id=".security.command.user_password_hash.lazy"/>
