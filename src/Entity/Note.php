@@ -371,4 +371,9 @@ class Note
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->musique. ' '. $this->absence_bug. ' '. $this->temps_chargement. ' '. $this->bruitage. ' '. $this->originalite. ' '. $this->rendement_horaire. ' '. $this->phase_jeu. ' '. $this->charge_emotionnelle. ' '. $this->narration. ' '. $this->pertinence_parti_pris. ' '. $this->diversite_nuance. ' '. $this->gestion_difficulte. ' '. $this->efficacite_interface. ' '. $this->disponibilite. ' '. $this->message_autocritique. ' '. $this->integration_message. ' '. $this->coup_de_coeur. ' '. $this->synergie. ' '. $this->ressource_materiel;
+    }
 }

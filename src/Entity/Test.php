@@ -201,4 +201,9 @@ class Test
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->son. ' '. $this->code. ' '. $this->gameplay. ' '. $this->rythme. ' '. $this->scenario. ' '. $this->graphisme. ' '. $this->accessibilite. ' '. $this->disponibilite. ' '. $this->ouverture_reflexion;
+    }
 }
