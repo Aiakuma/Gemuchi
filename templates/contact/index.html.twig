@@ -14,13 +14,10 @@
             {{ form_row(form.message, {'label': 'votre message :','attr': {'class': 'message'}}) }}
             {{ form_row(form.agreeTerms, {'label': "J'accepte les conditions d'utilisation."}) }}       
             {{ form_rest(form) }}
-            
             <div class="form-group">
                 <button class=" btn-submit btn btn-primary px-4 float-end"> Envoyer</button>
             </div>
-            
             {{ form_end(form) }}
         </div>
-       
     </div>
 {% endblock %}

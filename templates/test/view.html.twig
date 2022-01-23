@@ -1,102 +1,98 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}{{ game.name }}{% endblock %}
 
 {% block body %}
-<main class="px-5">
-    <h1>{{ game.name }}</h1>
-    <img src="{{ game.picture }}">
-    <div>
-    <div class="d-flex">
-    <span>Année : {{game.year}}</span>
-    <span>Catégorie : {{game.category}}</span>
-    <span>Plateforme : {{game.console}}</span>
-    </div>
-    <span>{{game.note}} </span>
-    <span>
-    </div>
-    <div>
+<main>
+  <div class="container container-test px-0">
+        <h1 class=" text-center mt-3 py-0 mb-2 py-md-2">{{ game.name }}</h1>
+        <div class="img-test mx-auto">
+            <img class="img-fluid" src="{{ game.picture }}">
+        </div>   
+        <div class="d-flex justify-content-around my-3">
+            <div class="d-flex flex-column">
+                <p>Année : {{game.year}}</p>
+                <p> Catégorie : 
+                {% for category in game.category %}
+                    <span>{{category.name}} - </span>
+                {% endfor %}
+                </p>
+                <p> Plateforme : 
+                {% for console in game.console %}
+                    <span>{{console.name}} - </span>
+                {% endfor %}
+                </p>
+            </div>
+
+            <div class="note-game d-flex flex-column p-5">
+                <span>{{game.note}} </span>
+                {% for note in game.note %}
+                    <span>{{note.coup_de_coeur}} </span>
+                {% endfor %}
+            </div> 
+        </div>
+    <div class="content-test container p-5">  
         <div>
-            <span>Son</span>
-            <p>{{game.test.son}}</p>
-            <span>Musique :{{game.note.musique}}</span>
-            <span>Bruitage :{{game.note.bruitage}}</span>
+            <div>
+            <h3>Son</h3>
+            <p>{{test.son}}</p>
         </div>
         <div>
-            <span>Code</span>
-            <p>{{game.test.code}}</p>
-            <span>Bug :{{game.note.bug}}</span>
-            <span>Temps de Chargement :{{game.note.Chargement}}</span>
+            <h3>Solidité du Code</h3>
+            <p>{{test.code}}</p>
         </div>
         <div>
-            <span>Son</span>
-            <p>{{game.test.son}}</p>
-            <span>Musique :{{game.note.musique}}</span>
-            <span>Musique :{{game.note.bruitage}}</span>
+            <h3>Gameplay</h3>
+            <p>{{test.gameplay}}</p>
         </div>
         <div>
-            <span>Son</span>
-            <p>{{game.test.son}}</p>
-            <span>Musique :{{game.note.musique}}</span>
-            <span>Musique :{{game.note.bruitage}}</span>
+            <h3>Rythme de Jeu</h3>
+            <p>{{test.rythme}}</p>
         </div>
         <div>
-            <span>Son</span>
-            <p>{{game.test.son}}</p>
-            <span>Musique :{{game.note.musique}}</span>
-            <span>Musique :{{game.note.bruitage}}</span>
+            <h3>Scénario</h3>
+            <p>{{test.scenario}}</p>
+        </div><div>
+            <h3>Graphisme</h3>
+            <p>{{test.graphisme}}</p>
         </div>
         <div>
-            <span>Son</span>
-            <p>{{game.test.son}}</p>
-            <span>Musique :{{game.note.musique}}</span>
-            <span>Musique :{{game.note.bruitage}}</span>
+            <h3>Accessibilité In-Game</h3>
+            <p>{{test.accessibilite}}</p>
         </div>
         <div>
-            <span>Son</span>
-            <p>{{game.test.son}}</p>
-            <span>Musique :{{game.note.musique}}</span>
-            <span>Musique :{{game.note.bruitage}}</span>
+            <h3>Accessibilité IRL </h3>
+            <p>{{test.disponibilite}}</p>
         </div>
         <div>
-            <span>Son</span>
-            <p>{{game.test.son}}</p>
-            <span>Musique :{{game.note.musique}}</span>
-            <span>Musique :{{game.note.bruitage}}</span>
-        </div>
-        <div>
-            <span>Son</span>
-            <p>{{game.test.son}}</p>
-            <span>Musique :{{game.note.musique}}</span>
-            <span>Musique :{{game.note.bruitage}}</span>
+            <h3>Ouverture à la réflexion, qualité artistique du produit culturel</h3>
+            <p>{{test.ouverturereflexion}}</p>
         </div>
     </div>
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        
+    
+    </div>
+    <div class=" text-center my-5">
+        <a class=" link-affiliation text-decoration-none px-4 py-3 " href="#"> Lien d'affiliation <i class="icon-link fas fa-chevron-right"></i> </a>
+    </div>
+
+    <div class="container-slider p-4">
+         <div class="slider-wrapper">
+            <div class="slider-main" id="slider-main">
+                {% for game in games %}
+                <div class="slider-item">
+                    <img class="rounded" src="{{ game.picture}}" alt="image">
+                </div>
+                {% endfor %}
+            </div>
+            <button type="button" class="slider-btn btn-prev" onclick="prev()"><i class="fas fa-chevron-left"></i></button>
+            <button type="button" class="slider-btn btn-next" onclick="next()"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+   
+
   </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="..." class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+
 </main>
 {% endblock %}
 
