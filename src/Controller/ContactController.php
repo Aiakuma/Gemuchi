@@ -36,6 +36,13 @@ class ContactController extends AbstractController
                 'text/plain');
             $mailer->send($message);
             $this->addFlash('success', 'Votre message a été envoyé.');**/
+
+            /* En cas d'échec de DevMail
+            $contact = $form->getData();
+            $this->entityManager->persist($contact);
+            $this->entityManager->flush();
+            $this->addFlash('success', 'Votre message a été envoyé.');
+            */
             return $this->redirectToRoute('contact');
             }
             return $this->render('contact/index.html.twig',
