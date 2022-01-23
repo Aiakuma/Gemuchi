@@ -14,7 +14,7 @@ return [
     '_profiler_router' => [['token'], ['_controller' => 'web_profiler.controller.router::panelAction'], [], [['text', '/router'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
-    'about' => [[], ['_controller' => 'App\\Controller\\AboutController::index'], [], [['text', '/a-propos/']], [], [], []],
+    'about' => [[], ['_controller' => 'App\\Controller\\AboutController::index'], [], [['text', '/about']], [], [], []],
     'admin' => [[], ['_controller' => 'App\\Controller\\Admin\\DashboardController::index'], [], [['text', '/admin']], [], [], []],
     'category' => [[], ['_controller' => 'App\\Controller\\CategoryController::index'], [], [['text', '/category']], [], [], []],
     'console' => [[], ['_controller' => 'App\\Controller\\ConsoleController::index'], [], [['text', '/console']], [], [], []],
@@ -26,6 +26,6 @@ return [
     'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/connexion']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], [], []],
     'index_tests' => [[], ['_controller' => 'App\\Controller\\TestController::index'], [], [['text', '/tests/']], [], [], []],
-    'view_test' => [['id'], ['_controller' => 'App\\Controller\\TestController::view'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/tests']], [], [], []],
+    'view_test' => [['id'], ['_controller' => 'App\\Controller\\TestController::view'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/tests/test']], [], [], []],
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
 ];

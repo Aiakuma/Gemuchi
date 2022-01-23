@@ -45,7 +45,7 @@ class AppFixtures extends Fixture
                 'graphisme' => "Dans un esthétique manga propre au Visual Novel, les lieux sont bardés de détails agréables à découvrir et les personnages bariolés ont suffisamment d’animation pour rendre leurs discours dynamique et véhiculer leur état d’esprit. Prérequis très important lors d’un jeu à base d’enquête policière.",
                 'accessibilite' => "La difficulté n’est pas réglable, cependant la courbe de progression de la difficulté est parfaitement maitrisé, on déplorera cependant que sur l’épisode Justice for All, et sur certaines affaires de Trials & Tribulations, l’écart de compréhension de l’affaire entre le joueur et ce qu’anticipe le jeu peut être tel que le Joueur peut se retrouver bloquer à ne pas comprendre ce qu’il doit faire, pensant certains éléments de l’affaire en cours comme acquis. Un problème récurrent plus ou moins bien compensé au fil des jeux. Pour y remédier, il n’est alors pas inhabituel d’utiliser la technique de sauvegarder au moment d’un point tournant où le joueur peut se mettre à douter de ce que le jeu peut faire paraitre comme évident.",
                 'disponibilite' => "Le jeu fait 2 Giga-octets pour 20€, Donc en terme de prix et d’installation le jeu être acquis sans débauche de moyens et de matériel. Le Jeu ne nécessite aucune connexion internet et ne possède aucune DRM, de quoi facilement lancer son jeu le temps d’une pause-café.",
-                'ouverture_reflexion' => "Ace Attorney est une réflexion sur la justice, balance entre Conviction et Fait. Vous avez besoin de fait pour étayer vos convictions, mais votre conviction ne doit pas nier les faits. Un équilibre qui représente bien l’exercice de la loi et dont vous êtes partie prenante. La seule chose qui doit compter dans un tribunal est la poursuite de la vérité, au-delà de toute autre considération humaine.
+                'ouverturereflexion' => "Ace Attorney est une réflexion sur la justice, balance entre Conviction et Fait. Vous avez besoin de fait pour étayer vos convictions, mais votre conviction ne doit pas nier les faits. Un équilibre qui représente bien l’exercice de la loi et dont vous êtes partie prenante. La seule chose qui doit compter dans un tribunal est la poursuite de la vérité, au-delà de toute autre considération humaine.
                 Chaque enquête, sans parler de l’intrigue de fond autour de Phoenix Wright, vous rappellera ce mantra. Car Ace Attorney a mis le doigt sur quelque chose de fondamental. Tout le jeu vous demande de dénouer les mensonges de bonne foi ou éhonté. De croire en l’innocence de ceux que tout accuse pour ne pas fermer la porte de la réflexion trop vite, pour que l’évidence supposée ne supplante pas la réalité des faits."
             ],
             [
@@ -58,7 +58,7 @@ class AppFixtures extends Fixture
                 'graphisme' => "Arkham est un asile ou les vestiges gothiques se sont vus greffée des laboratoires et installation médicale vieilli par le temps et le désintérêt. Cette île de fous exerce une pression sur les gens et parfois on sent presque une inspiration horrifique.",
                 'accessibilite' => "La difficulté n’est pas modulable et elle est parfaitement maitrisée, chaque situation n’est pas difficile à résoudre techniquement, mais demandera de la réflexion, et même les combat demanderont de choisir l’ordre dans lequel vos cibles doivent être vaincu pour le rendre plus facile.",
                 'disponibilite' => "Le jeu fait 70 Giga-octets pour un prix dérisoire de 20€, il est donc facilement accessible à toutes les bourses. Cependant il faudra un ordinateur possédant à minima une carte graphique dédiée aux jeux et un bon processeur. Le jeu vieillissant, peu d’ordinateur n’auront pas les composants requis pour faire tourner le jeu en configuration minimale. Le seul bémol est le fait qu’une bonne connexion internet sera nécessaire pour installer le jeu… où quelques nuits de disponibles. Le cœur du jeu, à savoir son mode campagne, est disponible sans connexion internet, de même que sa DRM est totalement invisible et n’empêche pas le bon fonctionnement du jeu ainsi que de son support en général. De plus les mises à jour son peu fréquente ce qui évite les téléchargements intempestifs en début de jeu.",
-                'ouverture_reflexion' => "Il est impossible d’identifier clairement une réflexion artistique sur le jeu."
+                'ouverturereflexion' => "Il est impossible d’identifier clairement une réflexion artistique sur le jeu."
             ],
             [
                 'son' => "La Musique de Battletech est signée Jhon Everist, et son travail est à féliciter. En effet c’est son orchestre qui donne la puissance de l’épopée mythique qu’est l’histoire de Dame Arano. Entre Electro et Symphonique, la musique de Battletech accompagne avec brio le combat de titans de métal que constitue le jeu. D’ailleurs, même si ce n’est pas toujours le cas, il est à noté que les humains ont droit à un orchestre classique et les machines des musiques avec une forte tendance Electronique.
@@ -76,7 +76,7 @@ class AppFixtures extends Fixture
                 'graphisme' => "Le jeu est constitué de modèle 3D tournant sur Unity lors des combats, et des illustrations lors des cinématiques. Les environnements sont variés, mais à part leur intérêt stratégique, on ressent peu de chose, notamment parce que la caméra est loin des évennements. Les Battlemechs sont proche de ceux de la saga Mechwarrior, et en font de véritables machines véhiculaire que des goldorak des illustrations officielles du jeu de plateau. Ce qui est appréciable. ",
                 'accessibilite' => "Le jeu, même en difficulté simplifié, est punitif. Le problème que personne n’as l’air d’avoir relevé lors du développement c’est que vous vous battez avec les mêmes armes que votre adversaire. Sauf que vous êtes 4 maximum et que eux c’est plusieurs lances de mechs avec parfois renfort de tourelles et de véhicules. Donc vous devez avoir une longueur d’avance sur votre adversaire en vous dotant des mechs les plus lourd disponible afin d’encaisser les coups suffisamment longtemps. A titre de comparaison du même style de jeu, un seul soldat XCOM vaut plusieurs aliens.",
                 'disponibilite' => "Le jeu fait une trentaine de Giga-octet pour 40€, en configuration minimum il faudra un bon processeur et une bonne carte graphique. Le cœur du jeu, à savoir son mode campagne, est disponible sans connexion internet, de même que sa DRM est totalement invisible et n’empêche pas le bon fonctionnement du jeu ainsi que de son support en général. De plus les mises à jour son peu fréquente ce qui évite les téléchargements intempestif en début de jeu.",
-                'ouverture_reflexion' => "Le jeu est porté par l’histoire de Dame Arano, une reine bercée par les histoires chevaleresque de pilote de Battlemech que lui ont raconté son père. Alors qu’elle affronte les réalités de la guerre pour reprendre son trône, elle vous engage, vous, mercenaire pour accomplir les missions les plus difficiles de sa campagne. Votre histoire deviendra un mythe, votre mythe deviendra une légende. Au final peu importe qui vous étiez, ce que vous avez fait et pourquoi vous l’avez fait. Le temps effacera le moindre détail de votre vie et deviendra une histoire chevaleresque d’une bande mercenaire, pilote de Battlemech. Car l’important n’est pas la vérité qui se cache derrière vos actions, mais les histoires qu’on en tire. Les histoires qui inspirent les peuples."
+                'ouverturereflexion' => "Le jeu est porté par l’histoire de Dame Arano, une reine bercée par les histoires chevaleresque de pilote de Battlemech que lui ont raconté son père. Alors qu’elle affronte les réalités de la guerre pour reprendre son trône, elle vous engage, vous, mercenaire pour accomplir les missions les plus difficiles de sa campagne. Votre histoire deviendra un mythe, votre mythe deviendra une légende. Au final peu importe qui vous étiez, ce que vous avez fait et pourquoi vous l’avez fait. Le temps effacera le moindre détail de votre vie et deviendra une histoire chevaleresque d’une bande mercenaire, pilote de Battlemech. Car l’important n’est pas la vérité qui se cache derrière vos actions, mais les histoires qu’on en tire. Les histoires qui inspirent les peuples."
             ],
             [
                 'son' => "DOOM est à l’univers Metal ce que Rockman (Megaman en occident) est au Rock. Donc, le choix de la musique est pertinent. Le style du jeu demandant un haut niveau de concentration, la musique est fatalement un simple arrière-plan, une musique d’ambiance. Cependant, en termes de gradation dans la violence, c’est un pari réussi et votre soif de sang n’en sera que décuplé par la puissance d’un orchestre impie. Dans un jeu mettant la violence et le gore en avant, il se doit d’avoir des bruitages de tripes convaincant. Et c’est réussi. Le bruit des armes est un peu léger mais peut s’expliquer par le manque de recul visuel. L’impact a été sacrifié pour le Gamefeel. Côté diversifié, chaque objet, chaque ennemi, chaque compétence possède une gamme de son pour que vous puissiez identifier et comprendre les actions sans voir.",
@@ -87,7 +87,7 @@ class AppFixtures extends Fixture
                 'graphisme' => "Tout DOOM est inspiré de l’esthétique de la musique Metal : des mondes désolés des démons, de la technologie malveillante, des sociétés qui crachent leur message sans se rendre compte de l’odeur nauséabonde de leurs idées. L’enfer est d’un côté du portail mais lequel ?",
                 'accessibilite' => "La difficulté de « Bleusaille » à « Ultracauchemar » avec en bonus un mode « une vie seulement » va largement permettre au meilleur comme au plus mauvais de profiter de l’ensemble du jeu tout en promettant un défi de taille pour les joueurs qui aime souffrir. En ce qui concerne l’interface, tout est absolument limpide, la prise d’information est intuitive.",
                 'disponibilite' => "Le jeu fait 70 Giga-octets pour un prix dérisoire de 20€, il est donc facilement accessible à toute les bourses. Cependant il faudra un ordinateur possédant à minima une carte graphique dédiée aux jeux et un bon processeur. Le jeu vieillissant, peu d’ordinateur n’auront pas les composants requis pour faire tourner le jeu en configuration minimale. Le seul bémole est le fait qu’une bonne connexion internet sera nécessaire pour installer le jeu… où quelques nuit de disponibles. Le cœur du jeu, à savoir son mode campagne, est disponible sans connexion internet, de même que sa DRM est totalement invisible et n’empêche pas le bon fonctionnement du jeu ainsi que de son support en général. De plus les mises à jour son peu fréquente ce qui évite les téléchargements intempestif en début de jeu.",
-                'ouverture_reflexion' => "Ce que dit et ce qu’est DOOM est une leçon vidéoludique. En se défaisant des artifices qui ont cumulé sur le genre qu’il a créé, ce jeu est le plus pur des FPS dans le corps et l’esprit. Jusqu’au choix de rendre votre personnage muet et son visage toujours caché vous incite à vous désintéressez de votre personnage, de l’enjeu de votre quête, de la raison qui ont poussé les hommes à commettre l’irréparable. 
+                'ouverturereflexion' => "Ce que dit et ce qu’est DOOM est une leçon vidéoludique. En se défaisant des artifices qui ont cumulé sur le genre qu’il a créé, ce jeu est le plus pur des FPS dans le corps et l’esprit. Jusqu’au choix de rendre votre personnage muet et son visage toujours caché vous incite à vous désintéressez de votre personnage, de l’enjeu de votre quête, de la raison qui ont poussé les hommes à commettre l’irréparable. 
                 Les démons ont envahi la base martienne, vous seul êtes capable de les en chasser. Vous les massacrerez jusqu’au dernier. Ce que dit DOOM, c’est que seul le jeu compte, tout le reste dans cet art est décoratif… Tout en soignant ces dites décorations pour offrir une expérience vraiment unique !
                 "
             ],
@@ -100,7 +100,7 @@ class AppFixtures extends Fixture
                 'graphisme' => "C’est moins les graphismes que le moteur graphique de Bethesda qui commence à fatiguer, les environnements sont varié comme les ambiances. Mais les ragdoll, les interactions physique et le reste donne à ce jeux un sentiment d’entre-deux âges.",
                 'accessibilite' => "La difficulté est réglable, même si elle ne change pas grand-chose sinon le nombre de tir qu’il faudra pour tuer un ennemi. Et le nombre d’ennemis légendaire rencontrés. C’est franchement artificiel et mieux vaut si on veut du défi se lancer dans le mode Survie. Les interfaces sont simple et même la couleur est customisable (ça sert à rien mais ça fait plaisir).",
                 'disponibilite' => "Le jeu est d’un poids relativement lourd, plus de 60Go, mais pour un terrain plus vaste que ce que peuvent offrir certains jeu encore actuel. Il faudra par contre un bon équipement pour profiter du peu de graphisme qu’offre le jeu.",
-                'ouverture_reflexion' => "Je vois Fallout 4 comme l’illustration d’un monde qui a sombré dans la théorie du complot, et pour cela, je suis obligé de divulgacher le principal élément du scénario. Alors que vous cherchez votre fils, vous découvrez qu’il a vieilli bien plus vite que vous et se trouve être le directeur de l’Institut que tout le monde craint.
+                'ouverturereflexion' => "Je vois Fallout 4 comme l’illustration d’un monde qui a sombré dans la théorie du complot, et pour cela, je suis obligé de divulgacher le principal élément du scénario. Alors que vous cherchez votre fils, vous découvrez qu’il a vieilli bien plus vite que vous et se trouve être le directeur de l’Institut que tout le monde craint.
                 L’institut est composé de scientifique, de professeur et d’étudiant de l’ancien CIT de Boston. Les miliciens sont des gens du peuple, qui se regroupent en une armée de volontaire et répondent aux appels à l’aide.
                 La Confrérie de l’Acie, force militaire professionnelle, et ce qui s’approche le plus d’une approche politique et gouvernementale.
                 Enfin, le Réseau du Rail, force occulte sabotant les efforts de l’Institut, veille à ce que ses synthétique puisse avoir une vie normale.
@@ -124,7 +124,7 @@ class AppFixtures extends Fixture
                 'accessibilite' => "Ce jeux est extrêmement exigeant, si vous ne maitrisez pas la mécanique de la parade et ne savez pas comment esquiver les coups, vous ne passerez pas le deuxième niveau. Il vous faudra alors recommencer une partie en mode « assisté » pour profiter de ce que le jeu peut vous offrir. Les contrôles et les interfaces de plus sont très difficilement lisibles, ce qui ne rend pas les phases de gameplay agréable si on est un néophyte.",
                 'disponibilite' => "Le jeu fait 24 Giga-octets pour un prix de 20€. Honnête. 
                 Le jeu n’étant plus tout jeune, pas besoin d’avoir un matériel de pointe pour le faire tourner non plus. L’entièreté du jeu est hors-ligne, aucune DRM ne vient alourdir le jeu.",
-                'ouverture_reflexion' => "Ce qui sauve MGR : Revengeance c’est paradoxalement bien son histoire unique qu’un joueur peu attentif ne pourra pas comprendre. En effet ce jeu est au Jeu-Vidéo est ce que The Devil’s Reject est au cinéma. Profondément subversif. Non sur ce qu’il est mais sur ce qu’il dit.
+                'ouverturereflexion' => "Ce qui sauve MGR : Revengeance c’est paradoxalement bien son histoire unique qu’un joueur peu attentif ne pourra pas comprendre. En effet ce jeu est au Jeu-Vidéo est ce que The Devil’s Reject est au cinéma. Profondément subversif. Non sur ce qu’il est mais sur ce qu’il dit.
                 Depuis leur première itération, les œuvres Metal Gear sont pacifiste, et souligne toute l’absurdité de la guerre. MGR nous parle de sa cruelle nécessité au sens spinosiste du terme. En effet, ce qui fait souffrir le plus dans ce jeu n’est pas la guerre mais bien la paix. Paix qui n’est qu’un mirage des puissants, utilisé comme ultime argument pour justifier leur main mise sur la société. Tout le pamphlet de MGR tient dans le discours de Sundowner au moment de tuer le président dont vous aviez la garde : « Donnez une chance à la guerre ». Une provocation qui exprime la volonté de chaos des Desperado, refusant une paix tyranique.
                 Et un troisième degré de lecture s’offre au joueur, lorsque le héros découvre que la paix comme la guerre sont des services qu’offre le politique pour faire diversion face à la masse qui souhaite se couvrir les yeux face à la réalité. Tout cela transmis dans les différentes chansons que portent les personnages brillament écrit que vous devrez affronter :
                 Mistral, Monsoon, Sundowner, Jetstream… Ces 4 vents de la destruction ont l’ironie de croiser la route de Raiden, le Dieu des Tempêtes…"
@@ -141,159 +141,159 @@ class AppFixtures extends Fixture
             $test->setGraphisme($t['graphisme']);
             $test->setAccessibilite($t['accessibilite']);
             $test->setDisponibilite($t['disponibilite']);
-            $test->setOuvertureReflexion($t['ouverture_reflexion']);
+            $test->setOuvertureReflexion($t['ouverturereflexion']);
             $manager->persist($test);
         }
         // Notes
         $notes = [
             [
                 'musique' => '1',
-                'absence_bug' => '1',
-                'temps_chargement' => '1',
+                'absencebug' => '1',
+                'tempschargement' => '1',
                 'bruitage' => '0.5',
                 'originalite' => '0.5',
-                'rendement_horaire' => '1',
-                'phase_jeu' => '0.5',
-                'charge_emotionnelle' => '1',
+                'rendementhoraire' => '1',
+                'phasejeu' => '0.5',
+                'chargeemotionnelle' => '1',
                 'narration' => '1',
-                'pertinence_parti_pris' => '1',
-                'diversite_nuance' => '1',
-                'gestion_difficulte' => '0.5',
-                'efficacite_interface' => '1',
+                'pertinencepartipris' => '1',
+                'diversitenuance' => '1',
+                'gestiondifficulte' => '0.5',
+                'efficaciteinterface' => '1',
                 'disponibilite' => '1',
-                'message_autocritique' => '1',
-                'integration_message' => '1',
-                'coup_de_coeur' => '2',
+                'messageautocritique' => '1',
+                'integrationmessage' => '1',
+                'coupdecoeur' => '2',
                 'synergie' => '1',
-                'ressource_materiel' => '1',
+                'ressourcemateriel' => '1',
             ],
             [
                 'musique' => '1',
-                'absence_bug' => '1',
-                'temps_chargement' => '1',
+                'absencebug' => '1',
+                'tempschargement' => '1',
                 'bruitage' => '1',
                 'originalite' => '1',
-                'rendement_horaire' => '1',
-                'phase_jeu' => '1',
-                'charge_emotionnelle' => '0',
+                'rendementhoraire' => '1',
+                'phasejeu' => '1',
+                'chargeemotionnelle' => '0',
                 'narration' => '1',
-                'pertinence_parti_pris' => '1',
-                'diversite_nuance' => '1',
-                'gestion_difficulte' => '1',
-                'efficacite_interface' => '1',
+                'pertinencepartipris' => '1',
+                'diversitenuance' => '1',
+                'gestiondifficulte' => '1',
+                'efficaciteinterface' => '1',
                 'disponibilite' => '1',
-                'message_autocritique' => '0',
-                'integration_message' => '0',
-                'coup_de_coeur' => '1',
+                'messageautocritique' => '0',
+                'integrationmessage' => '0',
+                'coupdecoeur' => '1',
                 'synergie' => '1',
-                'ressource_materiel' => '1',
+                'ressourcemateriel' => '1',
             ],
             [
                 'musique' => '1',
-                'absence_bug' => '0',
-                'temps_chargement' => '0',
+                'absencebug' => '0',
+                'tempschargement' => '0',
                 'bruitage' => '0.5',
                 'originalite' => '0',
-                'rendement_horaire' => '1',
-                'phase_jeu' => '0',
-                'charge_emotionnelle' => '1',
+                'rendementhoraire' => '1',
+                'phasejeu' => '0',
+                'chargeemotionnelle' => '1',
                 'narration' => '1',
-                'pertinence_parti_pris' => '1',
-                'diversite_nuance' => '1',
-                'gestion_difficulte' => '0',
-                'efficacite_interface' => '1',
+                'pertinencepartipris' => '1',
+                'diversitenuance' => '1',
+                'gestiondifficulte' => '0',
+                'efficaciteinterface' => '1',
                 'disponibilite' => '1',
-                'message_autocritique' => '1',
-                'integration_message' => '0',
-                'coup_de_coeur' => '0',
+                'messageautocritique' => '1',
+                'integrationmessage' => '0',
+                'coupdecoeur' => '0',
                 'synergie' => '0',
-                'ressource_materiel' => '0',
+                'ressourcemateriel' => '0',
             ],
             [
                 'musique' => '0.5',
-                'absence_bug' => '1',
-                'temps_chargement' => '1',
+                'absencebug' => '1',
+                'tempschargement' => '1',
                 'bruitage' => '1',
                 'originalite' => '1',
-                'rendement_horaire' => '1',
-                'phase_jeu' => '1',
-                'charge_emotionnelle' => '0',
+                'rendementhoraire' => '1',
+                'phasejeu' => '1',
+                'chargeemotionnelle' => '0',
                 'narration' => '1',
-                'pertinence_parti_pris' => '1',
-                'diversite_nuance' => '1',
-                'gestion_difficulte' => '1',
-                'efficacite_interface' => '1',
+                'pertinencepartipris' => '1',
+                'diversitenuance' => '1',
+                'gestiondifficulte' => '1',
+                'efficaciteinterface' => '1',
                 'disponibilite' => '1',
-                'message_autocritique' => '1',
-                'integration_message' => '1',
-                'coup_de_coeur' => '2',
+                'messageautocritique' => '1',
+                'integrationmessage' => '1',
+                'coupdecoeur' => '2',
                 'synergie' => '1',
-                'ressource_materiel' => '1',
+                'ressourcemateriel' => '1',
             ],
             [
                 'musique' => '1',
-                'absence_bug' => '0',
-                'temps_chargement' => '0.5',
+                'absencebug' => '0',
+                'tempschargement' => '0.5',
                 'bruitage' => '1',
                 'originalite' => '0',
-                'rendement_horaire' => '1',
-                'phase_jeu' => '1',
-                'charge_emotionnelle' => '1',
+                'rendementhoraire' => '1',
+                'phasejeu' => '1',
+                'chargeemotionnelle' => '1',
                 'narration' => '1',
-                'pertinence_parti_pris' => '0.5',
-                'diversite_nuance' => '0.5',
-                'gestion_difficulte' => '0.5',
-                'efficacite_interface' => '1',
+                'pertinencepartipris' => '0.5',
+                'diversitenuance' => '0.5',
+                'gestiondifficulte' => '0.5',
+                'efficaciteinterface' => '1',
                 'disponibilite' => '1',
-                'message_autocritique' => '1',
-                'integration_message' => '1',
-                'coup_de_coeur' => '1',
+                'messageautocritique' => '1',
+                'integrationmessage' => '1',
+                'coupdecoeur' => '1',
                 'synergie' => '1',
-                'ressource_materiel' => '0.5',
+                'ressourcemateriel' => '0.5',
             ],
             [
                 'musique' => '1',
-                'absence_bug' => '1',
-                'temps_chargement' => '1',
+                'absencebug' => '1',
+                'tempschargement' => '1',
                 'bruitage' => '0.5',
                 'originalite' => '1',
-                'rendement_horaire' => '1',
-                'phase_jeu' => '0.5',
-                'charge_emotionnelle' => '0',
+                'rendementhoraire' => '1',
+                'phasejeu' => '0.5',
+                'chargeemotionnelle' => '0',
                 'narration' => '1',
-                'pertinence_parti_pris' => '0.5',
-                'diversite_nuance' => '0.5',
-                'gestion_difficulte' => '0',
-                'efficacite_interface' => '0',
+                'pertinencepartipris' => '0.5',
+                'diversitenuance' => '0.5',
+                'gestiondifficulte' => '0',
+                'efficaciteinterface' => '0',
                 'disponibilite' => '1',
-                'message_autocritique' => '1',
-                'integration_message' => '1',
-                'coup_de_coeur' => '2',
+                'messageautocritique' => '1',
+                'integrationmessage' => '1',
+                'coupdecoeur' => '2',
                 'synergie' => '0',
-                'ressource_materiel' => '1',
+                'ressourcemateriel' => '1',
             ]
         ];
         foreach($notes as $n) {
             $note = new Note();
             $note->setMusique($n['musique']);
-            $note->setAbsenceBug($n['absence_bug']);
-            $note->setTempsChargement($n['temps_chargement']);
+            $note->setAbsenceBug($n['absencebug']);
+            $note->setTempsChargement($n['tempschargement']);
             $note->setBruitage($n['bruitage']);
             $note->setOriginalite($n['originalite']);
-            $note->setRendementHoraire($n['rendement_horaire']);
-            $note->setPhaseJeu($n['phase_jeu']);
-            $note->setChargeEmotionnelle($n['charge_emotionnelle']);
+            $note->setRendementHoraire($n['rendementhoraire']);
+            $note->setPhaseJeu($n['phasejeu']);
+            $note->setChargeEmotionnelle($n['chargeemotionnelle']);
             $note->setNarration($n['narration']);
-            $note->setPertinencePartiPris($n['pertinence_parti_pris']);
-            $note->setDiversiteNuance($n['diversite_nuance']);
-            $note->setGestionDifficulte($n['gestion_difficulte']);
-            $note->setEfficaciteInterface($n['efficacite_interface']);
+            $note->setPertinencePartiPris($n['pertinencepartipris']);
+            $note->setDiversiteNuance($n['diversitenuance']);
+            $note->setGestionDifficulte($n['gestiondifficulte']);
+            $note->setEfficaciteInterface($n['efficaciteinterface']);
             $note->setDisponibilite($n['disponibilite']);
-            $note->setMessageAutocritique($n['message_autocritique']);
-            $note->setIntegrationMessage($n['integration_message']);
-            $note->setCoupDeCoeur($n['coup_de_coeur']);
+            $note->setMessageAutocritique($n['messageautocritique']);
+            $note->setIntegrationMessage($n['integrationmessage']);
+            $note->setCoupDeCoeur($n['coupdecoeur']);
             $note->setSynergie($n['synergie']);
-            $note->setRessourceMateriel($n['ressource_materiel']);
+            $note->setRessourceMateriel($n['ressourcemateriel']);
             $manager->persist($note);
         }
         // Jeux

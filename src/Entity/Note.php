@@ -25,12 +25,12 @@ class Note
     /**
      * @ORM\Column(type="float")
      */
-    private $absence_bug;
+    private $absencebug;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $temps_chargement;
+    private $tempschargement;
 
     /**
      * @ORM\Column(type="float")
@@ -45,17 +45,17 @@ class Note
     /**
      * @ORM\Column(type="float")
      */
-    private $rendement_horaire;
+    private $rendementhoraire;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $phase_jeu;
+    private $phasejeu;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $charge_emotionnelle;
+    private $chargeemotionnelle;
 
     /**
      * @ORM\Column(type="float")
@@ -65,22 +65,22 @@ class Note
     /**
      * @ORM\Column(type="float")
      */
-    private $pertinence_parti_pris;
+    private $pertinencepartipris;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $diversite_nuance;
+    private $diversitenuance;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $gestion_difficulte;
+    private $gestiondifficulte;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $efficacite_interface;
+    private $efficaciteinterface;
 
     /**
      * @ORM\Column(type="float")
@@ -90,17 +90,17 @@ class Note
     /**
      * @ORM\Column(type="float")
      */
-    private $message_autocritique;
+    private $messageautocritique;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $integration_message;
+    private $integrationmessage;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $coup_de_coeur;
+    private $coupdecoeur;
 
     /**
      * @ORM\OneToOne(targetEntity=Game::class, mappedBy="Note", cascade={"persist", "remove"})
@@ -115,7 +115,7 @@ class Note
     /**
      * @ORM\Column(type="float")
      */
-    private $ressource_materiel;
+    private $ressourcemateriel;
 
     public function getId(): ?int
     {
@@ -136,24 +136,24 @@ class Note
 
     public function getAbsenceBug(): ?float
     {
-        return $this->absence_bug;
+        return $this->absencebug;
     }
 
-    public function setAbsenceBug(float $absence_bug): self
+    public function setAbsenceBug(float $absencebug): self
     {
-        $this->absence_bug = $absence_bug;
+        $this->absencebug = $absencebug;
 
         return $this;
     }
 
     public function getTempsChargement(): ?float
     {
-        return $this->temps_chargement;
+        return $this->tempschargement;
     }
 
-    public function setTempsChargement(float $temps_chargement): self
+    public function setTempsChargement(float $tempschargement): self
     {
-        $this->temps_chargement = $temps_chargement;
+        $this->tempschargement = $tempschargement;
 
         return $this;
     }
@@ -184,36 +184,36 @@ class Note
 
     public function getRendementHoraire(): ?float
     {
-        return $this->rendement_horaire;
+        return $this->rendementhoraire;
     }
 
-    public function setRendementHoraire(float $rendement_horaire): self
+    public function setRendementHoraire(float $rendementhoraire): self
     {
-        $this->rendement_horaire = $rendement_horaire;
+        $this->rendementhoraire = $rendementhoraire;
 
         return $this;
     }
 
     public function getPhaseJeu(): ?float
     {
-        return $this->phase_jeu;
+        return $this->phasejeu;
     }
 
-    public function setPhaseJeu(float $phase_jeu): self
+    public function setPhaseJeu(float $phasejeu): self
     {
-        $this->phase_jeu = $phase_jeu;
+        $this->phasejeu = $phasejeu;
 
         return $this;
     }
 
     public function getChargeEmotionnelle(): ?float
     {
-        return $this->charge_emotionnelle;
+        return $this->chargeemotionnelle;
     }
 
-    public function setChargeEmotionnelle(float $charge_emotionnelle): self
+    public function setChargeEmotionnelle(float $chargeemotionnelle): self
     {
-        $this->charge_emotionnelle = $charge_emotionnelle;
+        $this->chargeemotionnelle = $chargeemotionnelle;
 
         return $this;
     }
@@ -232,48 +232,48 @@ class Note
 
     public function getPertinencePartiPris(): ?float
     {
-        return $this->pertinence_parti_pris;
+        return $this->pertinencepartipris;
     }
 
-    public function setPertinencePartiPris(float $pertinence_parti_pris): self
+    public function setPertinencePartiPris(float $pertinencepartipris): self
     {
-        $this->pertinence_parti_pris = $pertinence_parti_pris;
+        $this->pertinencepartipris = $pertinencepartipris;
 
         return $this;
     }
 
     public function getDiversiteNuance(): ?float
     {
-        return $this->diversite_nuance;
+        return $this->diversitenuance;
     }
 
-    public function setDiversiteNuance(float $diversite_nuance): self
+    public function setDiversiteNuance(float $diversitenuance): self
     {
-        $this->diversite_nuance = $diversite_nuance;
+        $this->diversitenuance = $diversitenuance;
 
         return $this;
     }
 
     public function getGestionDifficulte(): ?float
     {
-        return $this->gestion_difficulte;
+        return $this->gestiondifficulte;
     }
 
-    public function setGestionDifficulte(float $gestion_difficulte): self
+    public function setGestionDifficulte(float $gestiondifficulte): self
     {
-        $this->gestion_difficulte = $gestion_difficulte;
+        $this->gestiondifficulte = $gestiondifficulte;
 
         return $this;
     }
 
     public function getEfficaciteInterface(): ?float
     {
-        return $this->efficacite_interface;
+        return $this->efficaciteinterface;
     }
 
-    public function setEfficaciteInterface(float $efficacite_interface): self
+    public function setEfficaciteInterface(float $efficaciteinterface): self
     {
-        $this->efficacite_interface = $efficacite_interface;
+        $this->efficaciteinterface = $efficaciteinterface;
 
         return $this;
     }
@@ -292,36 +292,36 @@ class Note
 
     public function getMessageAutocritique(): ?float
     {
-        return $this->message_autocritique;
+        return $this->messageautocritique;
     }
 
-    public function setMessageAutocritique(float $message_autocritique): self
+    public function setMessageAutocritique(float $messageautocritique): self
     {
-        $this->message_autocritique = $message_autocritique;
+        $this->messageautocritique = $messageautocritique;
 
         return $this;
     }
 
     public function getIntegrationMessage(): ?float
     {
-        return $this->integration_message;
+        return $this->integrationmessage;
     }
 
-    public function setIntegrationMessage(float $integration_message): self
+    public function setIntegrationMessage(float $integrationmessage): self
     {
-        $this->integration_message = $integration_message;
+        $this->integrationmessage = $integrationmessage;
 
         return $this;
     }
 
     public function getCoupDeCoeur(): ?float
     {
-        return $this->coup_de_coeur;
+        return $this->coupdecoeur;
     }
 
-    public function setCoupDeCoeur(float $coup_de_coeur): self
+    public function setCoupDeCoeur(float $coupdecoeur): self
     {
-        $this->coup_de_coeur = $coup_de_coeur;
+        $this->coupdecoeur = $coupdecoeur;
 
         return $this;
     }
@@ -362,18 +362,18 @@ class Note
 
     public function getRessourceMateriel(): ?float
     {
-        return $this->ressource_materiel;
+        return $this->ressourcemateriel;
     }
 
-    public function setRessourceMateriel(float $ressource_materiel): self
+    public function setRessourceMateriel(float $ressourcemateriel): self
     {
-        $this->ressource_materiel = $ressource_materiel;
+        $this->ressourcemateriel = $ressourcemateriel;
 
         return $this;
     }
 
     public function __toString()
     {
-        return $this->musique. ' '. $this->absence_bug. ' '. $this->temps_chargement. ' '. $this->bruitage. ' '. $this->originalite. ' '. $this->rendement_horaire. ' '. $this->phase_jeu. ' '. $this->charge_emotionnelle. ' '. $this->narration. ' '. $this->pertinence_parti_pris. ' '. $this->diversite_nuance. ' '. $this->gestion_difficulte. ' '. $this->efficacite_interface. ' '. $this->disponibilite. ' '. $this->message_autocritique. ' '. $this->integration_message. ' '. $this->coup_de_coeur. ' '. $this->synergie. ' '. $this->ressource_materiel;
+        return $this->musique. ' '. $this->absencebug. ' '. $this->tempschargement. ' '. $this->bruitage. ' '. $this->originalite. ' '. $this->rendementhoraire. ' '. $this->phasejeu. ' '. $this->chargeemotionnelle. ' '. $this->narration. ' '. $this->pertinencepartipris. ' '. $this->diversitenuance. ' '. $this->gestiondifficulte. ' '. $this->efficaciteinterface. ' '. $this->disponibilite. ' '. $this->messageautocritique. ' '. $this->integrationmessage. ' '. $this->coupdecoeur. ' '. $this->synergie. ' '. $this->ressourcemateriel;
     }
 }
