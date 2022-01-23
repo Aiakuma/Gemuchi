@@ -60,7 +60,7 @@ class Test
     /**
      * @ORM\Column(type="text")
      */
-    private $ouverture_reflexion;
+    private $ouverturereflexion;
 
     /**
      * @ORM\OneToOne(targetEntity=Game::class, mappedBy="Test", cascade={"persist", "remove"})
@@ -170,12 +170,12 @@ class Test
 
     public function getOuvertureReflexion(): ?string
     {
-        return $this->ouverture_reflexion;
+        return $this->ouverturereflexion;
     }
 
-    public function setOuvertureReflexion(string $ouverture_reflexion): self
+    public function setOuvertureReflexion(string $ouverturereflexion): self
     {
-        $this->ouverture_reflexion = $ouverture_reflexion;
+        $this->ouverturereflexion = $ouverturereflexion;
 
         return $this;
     }
@@ -204,6 +204,6 @@ class Test
 
     public function __toString()
     {
-        return $this->son. ' '. $this->code. ' '. $this->gameplay. ' '. $this->rythme. ' '. $this->scenario. ' '. $this->graphisme. ' '. $this->accessibilite. ' '. $this->disponibilite. ' '. $this->ouverture_reflexion;
+        return $this->son. ' '. $this->code. ' '. $this->gameplay. ' '. $this->rythme. ' '. $this->scenario. ' '. $this->graphisme. ' '. $this->accessibilite. ' '. $this->disponibilite. ' '. $this->ouverturereflexion;
     }
 }

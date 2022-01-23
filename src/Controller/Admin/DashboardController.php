@@ -44,24 +44,22 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
 
-        yield MenuItem::section('Tests');
-        yield MenuItem::linkToCrud('Tous les test', 'fas fa-', Test::class);
-        yield MenuItem::linkToCrud('Ajouter un test', 'fas fa-', Test::class)->setAction('new');
+        yield MenuItem::section('Tests', 'fas fa-scroll');
+        yield MenuItem::linkToCrud('Tous les test', 'fas fa-list', Test::class);
+        yield MenuItem::linkToCrud('Ajouter un test', 'fas fa-plus', Test::class)->setAction('new');
         
-        yield MenuItem::section('Catégories');
-        yield MenuItem::linkToCrud('Toutes les catégories', 'fas fa-', Category::class);
-        yield MenuItem::linkToCrud('Ajouter une catégorie', 'fas fa-', Category::class)->setAction('new');
+        yield MenuItem::section('Catégories', 'fab fa-buffer');
+        yield MenuItem::linkToCrud('Toutes les catégories', 'fas fa-list', Category::class);
+        yield MenuItem::linkToCrud('Ajouter une catégorie', 'fas fa-plus', Category::class)->setAction('new');
         
-        yield MenuItem::section('Consoles');
-        yield MenuItem::linkToCrud('Toutes les consoles', 'fas fa-', Console::class);
-        yield MenuItem::linkToCrud('Ajouter une console', 'fas fa-', Console::class)->setAction('new');
+        yield MenuItem::section('Consoles', 'fab fa-playstation');
+        yield MenuItem::linkToCrud('Toutes les consoles', 'fas fa-list', Console::class);
+        yield MenuItem::linkToCrud('Ajouter une console', 'fas fa-plus', Console::class)->setAction('new');
         
-        yield MenuItem::section('Jeux');
-        yield MenuItem::linkToCrud('Tous les jeux', 'fas fa-', Game::class);
-        yield MenuItem::linkToCrud('Ajouter un jeu', 'fas fa-', Game::class)->setAction('new');
+        yield MenuItem::section('Jeux', 'fas fa-gamepad');
+        yield MenuItem::linkToCrud('Tous les jeux', 'fas fa-list', Game::class);
+        yield MenuItem::linkToCrud('Ajouter un jeu', 'fas fa-plus', Game::class)->setAction('new');
 
-
-        //yield MenuItem::linkToCrud('Notes', 'fas fa-', Note::class);
        // yield MenuItem::linkToCrud('Administrateur', 'fas fa-user', User::class);
         
     }
