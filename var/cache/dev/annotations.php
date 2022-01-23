@@ -70,6 +70,8 @@ return [[
 '[C]App%5CController%5CAdmin%5CCategoryCrudController' => 1,
 'App%5CController%5CAdmin%5CCategoryCrudController%23getEntityFqcn' => 0,
 '[C]App%5CController%5CAdmin%5CCategoryCrudController%23getEntityFqcn' => 1,
+'App%5CController%5CAdmin%5CCategoryCrudController%23configureFields' => 0,
+'[C]App%5CController%5CAdmin%5CCategoryCrudController%23configureFields' => 1,
 'EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureCrud' => 0,
 '[C]EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureCrud' => 1,
 'EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureAssets' => 0,
@@ -78,8 +80,6 @@ return [[
 '[C]EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureActions' => 1,
 'EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureFilters' => 0,
 '[C]EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureFilters' => 1,
-'EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureFields' => 0,
-'[C]EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureFields' => 1,
 'EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23getSubscribedServices' => 0,
 '[C]EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23getSubscribedServices' => 1,
 'EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23index' => 0,
@@ -130,6 +130,8 @@ return [[
 '[C]App%5CController%5CAdmin%5CConsoleCrudController' => 1,
 'App%5CController%5CAdmin%5CConsoleCrudController%23getEntityFqcn' => 0,
 '[C]App%5CController%5CAdmin%5CConsoleCrudController%23getEntityFqcn' => 1,
+'App%5CController%5CAdmin%5CConsoleCrudController%23configureFields' => 0,
+'[C]App%5CController%5CAdmin%5CConsoleCrudController%23configureFields' => 1,
 'App%5CController%5CAdmin%5CDashboardController' => 0,
 '[C]App%5CController%5CAdmin%5CDashboardController' => 1,
 'App%5CController%5CAdmin%5CDashboardController%23index' => 3,
@@ -154,6 +156,8 @@ return [[
 '[C]App%5CController%5CAdmin%5CGameCrudController' => 1,
 'App%5CController%5CAdmin%5CGameCrudController%23getEntityFqcn' => 0,
 '[C]App%5CController%5CAdmin%5CGameCrudController%23getEntityFqcn' => 1,
+'EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureFields' => 0,
+'[C]EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureFields' => 1,
 'App%5CController%5CAdmin%5CNoteCrudController' => 0,
 '[C]App%5CController%5CAdmin%5CNoteCrudController' => 1,
 'App%5CController%5CAdmin%5CNoteCrudController%23getEntityFqcn' => 0,
@@ -176,9 +180,7 @@ return [[
 '[C]App%5CController%5CContactController%23index' => 1,
 'App%5CController%5CGameController' => 8,
 '[C]App%5CController%5CGameController' => 1,
-'App%5CController%5CGameController%23index' => 9,
-'[C]App%5CController%5CGameController%23index' => 1,
-'App%5CController%5CHomeController' => 0,
+'App%5CController%5CHomeController' => 9,
 '[C]App%5CController%5CHomeController' => 1,
 'App%5CController%5CHomeController%23index' => 10,
 '[C]App%5CController%5CHomeController%23index' => 1,
@@ -216,6 +218,8 @@ return [[
 '[C]App%5CEntity%5CCategory%23addGame' => 1,
 'App%5CEntity%5CCategory%23removeGame' => 0,
 '[C]App%5CEntity%5CCategory%23removeGame' => 1,
+'App%5CEntity%5CCategory%23__toString' => 0,
+'[C]App%5CEntity%5CCategory%23__toString' => 1,
 'App%5CEntity%5CCategory%24id' => 17,
 '[C]App%5CEntity%5CCategory%24id' => 1,
 'App%5CEntity%5CCategory%24name' => 18,
@@ -238,6 +242,8 @@ return [[
 '[C]App%5CEntity%5CConsole%23addGame' => 1,
 'App%5CEntity%5CConsole%23removeGame' => 0,
 '[C]App%5CEntity%5CConsole%23removeGame' => 1,
+'App%5CEntity%5CConsole%23__toString' => 0,
+'[C]App%5CEntity%5CConsole%23__toString' => 1,
 'App%5CEntity%5CConsole%24id' => 17,
 '[C]App%5CEntity%5CConsole%24id' => 1,
 'App%5CEntity%5CConsole%24name' => 18,
@@ -406,6 +412,8 @@ return [[
 '[C]App%5CEntity%5CNote%23getRessourceMateriel' => 1,
 'App%5CEntity%5CNote%23setRessourceMateriel' => 0,
 '[C]App%5CEntity%5CNote%23setRessourceMateriel' => 1,
+'App%5CEntity%5CNote%23__toString' => 0,
+'[C]App%5CEntity%5CNote%23__toString' => 1,
 'App%5CEntity%5CNote%24id' => 17,
 '[C]App%5CEntity%5CNote%24id' => 1,
 'App%5CEntity%5CNote%24musique' => 32,
@@ -1114,7 +1122,7 @@ return [[
 ], [
 
 0 => [],
-1 => 1642864384,
+1 => 1642881378,
 2 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
@@ -1253,7 +1261,7 @@ return [[
         [
             'Symfony\\Component\\Routing\\Annotation\\Route' => [
                 'path' => [
-                    '/tests',
+                    '/game',
                 ],
             ],
         ],
@@ -1272,10 +1280,7 @@ return [[
         [
             'Symfony\\Component\\Routing\\Annotation\\Route' => [
                 'path' => [
-                    '/',
-                ],
-                'name' => [
-                    'index_game',
+                    '/accueil',
                 ],
             ],
         ],
@@ -1294,7 +1299,7 @@ return [[
         [
             'Symfony\\Component\\Routing\\Annotation\\Route' => [
                 'path' => [
-                    '/home',
+                    '/',
                 ],
                 'name' => [
                     'home',
@@ -1316,7 +1321,7 @@ return [[
         [
             'Symfony\\Component\\Routing\\Annotation\\Route' => [
                 'path' => [
-                    '/mention_legale',
+                    '/mention/legale',
                 ],
                 'name' => [
                     'mention_legale',
@@ -1426,7 +1431,7 @@ return [[
         [
             'stdClass' => [
                 'repositoryClass' => [
-                    'CategorysRepository',
+                    'App\\Repository\\CategoryRepository',
                 ],
             ],
         ],
