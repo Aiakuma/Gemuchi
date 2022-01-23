@@ -19,35 +19,7 @@ function topFunction() {
 }
 
 /** FILTRE */
-/** 
-let menu = document.querySelectorAll('.dropdown-menu').children;
-let cards = document.querySelectorAll('.cards').children;
-let console = document.getElementById('console');
 
-
-
-for(let i=0; i < menu.length ;i++){
-  menu[i].onclick=function(){
-    for(let j=0; j < menu.length;j++){
-      menu[j].classList.remove('active');
-    }
-    this.classList.add('active');
-    const displayCards = this.value.menu;
-    for(let x=0; x<menu.length;x++){
-      cards[x].style.transform = 'scale(0)';
-      setTimeout(()=>{ cards[x].style.display='none';},500
-     
-      );
-      if(cards[x].value.console == displayCards || displayCards == 'platforme'){
-        cards[z].style.transform = 'scale(1)';
-        setTimeout(()=>{ cards[x].style.display='block';},500
-     
-        );
-      }
-    }
-  }
-}
-*/
 /** menu burger */
 let menu = document.querySelector('.navbar-toggler');
 let navCollapse = document.getElementById('navbarNav');
@@ -65,7 +37,12 @@ menu.addEventListener('click',()=>{
 
 
 /* CAROUSEL */
+let sliderMain = document.getElementById('slider-main');
+let item = sliderMain.getElementsByClassName('slider-item');
+function next(){
+  sliderMain.append(item[0]);
+}
 
-$(document).ready(function(){
-  $(".owl-carousel").owlCarousel();
-})
+function prev(){
+  sliderMain.prepend(item[item.length - 1]);
+}

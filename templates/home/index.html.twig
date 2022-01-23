@@ -31,7 +31,7 @@
                         </div>
                         <div class="col-8">
                             <div class="card-body">
-                                <h2 class="card-title t_Flood">{{ game.name }}</h2>
+                                <h2 class="card-title-home card-title t_Flood">{{ game.name }}</h2>
                                 <div>
                                     {% for console in game.console %}
                                         <span id="console" class="fw-bold"> {{ console.name }}</span>
@@ -41,7 +41,8 @@
                                     {% for category in game.category %}
                                         <button type="button" class="btn-category my-2 px-lg-2 py-lg-1">{{ category.name }}</button>
                                     {% endfor %}
-                                </div> 
+                                </div>
+                                 <a href="{{ path('view_test', { id: game.id }) }}" class="link-test text-decoration-none " >voir le test</a> 
                                 <div id="line"></div>       
                             </div>
                         </div>

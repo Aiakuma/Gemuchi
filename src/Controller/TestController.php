@@ -9,6 +9,7 @@ use App\Repository\GameRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\ConsoleRepository;
 use App\Repository\TestRepository;
+use App\Entity\Test;
 
  /**
      * @Route("/tests")
@@ -33,20 +34,21 @@ class TestController extends AbstractController
     }
 
     /**
-     * @Route("/test/{id}", name="view_test")
+     * @Route("/{id}", name="view_test")
      */
-    public function view(GameRepository $GameRepository,TestRepository $testRepository,$id, CategoryRepository $categoryRepository,ConsoleRepository $consoleRepository): Response
+    public function view(GameRepository $GameRepository,TestRepository $testRepository,$id, CategoryRepository $categoryRepository): Response
     {
         $test = $testRepository->find($id);
         $game = $GameRepository->find($test);
-        $category = $categoryRepository->find($game); 
- 
+        $games = $GameRepository->findAll();
+
+        
         return $this->render('test/view.html.twig',
-    [
-        'test' => $test,
-        'game' => $game,
-        'category' => $category,
-    ]
-    );
+            [
+                'test' => $test,
+                'game' => $game,
+                'games' => $games,
+
+            ]);
     }
 }

@@ -9,7 +9,7 @@ use App\Repository\GameRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\ConsoleRepository;
 /**
-     * @Route("/accueil")
+     * @Route("/")
      */
 class HomeController extends AbstractController
 {

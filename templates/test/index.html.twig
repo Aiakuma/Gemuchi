@@ -65,29 +65,32 @@
     </div>
     <div class="justify-content-lg-center ">
         {% for game in games %}
-            <div class="card mb-3 shadow-lg ">
+            <div class="card mb-3 shadow-lg">
                 <div class=" row g-0 d-flex justify-content-center align-items-center">
                     <div class="container-image col-md-6">
                         <img class="image rounded" src="{{ game.picture }}" alt="image">
                     </div>
-                    
                 <div class="col-md-6">
                     <div class="card-body">
                         <h2 class="card-title">{{ game.name }}</h2>
                         <span></span>
-                        <p class="card-text">{{ game.resume }} <a href="#" class="link-test text-decoration-none " >voir le test</a></p>
+                        <p class="card-text">{{ game.resume }} <a href="{{ path('view_test', { id: game.id }) }}" class="link-test text-decoration-none " >voir le test</a></p>
                         
 
                         <div id="line"></div>
                         <div class="d-flex justify-content-between mt-2">
-                            {% for console in game.console %}
-                                <span id="console" class="fw-bold"> {{ console.name }}</span>
-                            {% endfor %} 
-                            {% for category in game.category %}
-                                <button type="button" class="btn-category px-lg-2 py-lg-1">{{ category.name }}</button>
-                            {% endfor %}
+                            <div>
+                                 {% for console in game.console %}
+                                    <span id="console" class="fw-bold"> {{ console.name }} - </span>
+                                {% endfor %} 
+                            </div>
+                            <div>
+                                {% for category in game.category %}
+                                    <button type="button" class="btn-category px-lg-2 py-lg-1">{{ category.name }}</button>
+                                {% endfor %}
+                            </div>
+                            
                         </div>
-                        {#<a href="{{ path('test_view', { id: test.id }) }}"></a>#}
                         
                     </div>
                     
@@ -97,13 +100,6 @@
             </div>
 
             {% endfor %}
-    </div>
-    <div class="owl-carousel">
-        <div class="bg-info">your content</div>
-        <div class="bg-info">your content</div>
-        <div class="bg-info">your content</div>
-        <div class="bg-info">your content</div>
-        <div class="bg-info">your content</div>
     </div>
 </div>
 {% endblock %}
