@@ -7,7 +7,11 @@ use App\Entity\Console;
 use App\Entity\Game;
 use App\Entity\Note;
 use App\Entity\Test;
-use App\Entity\User;
+use App\Repository\TestRepository;
+use App\Repository\ConsoleRepository;
+use App\Repository\CategoryRepository;
+use App\Repository\GameRepository;
+use App\Repository\NoteRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
@@ -26,12 +30,44 @@ use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
 
 class DashboardController extends AbstractDashboardController
 {
+    protected $testRepository;
+    protected $categoryRepository;
+    protected $consoleRepository;
+    protected $gameRepository;
+    protected $noteRepository;
+
+    public function __construct(
+        TestRepository $testRepository,
+        CategoryRepository $categoryRepository,
+        ConsoleRepository $consoleRepository,
+        GameRepository $gameRepository,
+        NoteRepository $noteRepository
+    )
+    {
+        $this->testRepository = $testRepository;
+        $this->categoryRepository = $categoryRepository;
+        $this->consoleRepository = $consoleRepository;
+        $this->gameRepository = $gameRepository;
+        $this->noteRepository = $noteRepository;
+    }
     /**
      * @Route("/admin", name="admin")
      */
     public function index(): Response
     {
-        return $this->render('bundles/easyAdminBundle/welcome.html.twig');
+        $games = $this->gameRepository->findAll();
+        $categories = $this->categoryRepository->findAll();
+        $consoles = $this->consoleRepository->findAll();
+        return $this->render('bundles/easyAdminBundle/welcome.html.twig', 
+    [
+        'countAllGame' => $this->gameRepository->countAllGame(),
+        'countAllConsole' => $this->consoleRepository->countAllConsole(),
+        'countAllCategory' => $this->categoryRepository->countAllCategory(),
+        'countAllTest' => $this->testRepository->countAllTest(),
+        'games' => $games,
+        'categories' => $categories,
+        'consoles' => $consoles,
+    ]);
     }
 
     public function configureDashboard(): Dashboard
@@ -47,6 +83,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Tests', 'fas fa-scroll');
         yield MenuItem::linkToCrud('Tous les test', 'fas fa-list', Test::class);
         yield MenuItem::linkToCrud('Ajouter un test', 'fas fa-plus', Test::class)->setAction('new');
+
+        yield MenuItem::section('Notes', 'fas fa-award');
+        yield MenuItem::linkToCrud('Toutes les notes', 'fas fa-list', Note::class);
+        yield MenuItem::linkToCrud('Ajouter une note', 'fas fa-plus', Note::class)->setAction('new');
         
         yield MenuItem::section('Catégories', 'fab fa-buffer');
         yield MenuItem::linkToCrud('Toutes les catégories', 'fas fa-list', Category::class);

@@ -4,17 +4,73 @@
 {% block content_title 'Bienvenue, Gemuchi' %}
 
 {% block main %}
-    <div class="container">
-        <section class="row align-items-center">
-            <article class="col">
-                One of three columns
-            </article>
-            <article class="col">
-                One of three columns
-            </article>
-            <article class="col">
-                One of three columns
-            </article>
-        </section>
+    <div class="content">
+        <div class="container">
+            <section class="m-1">
+                <div class="row text-center">
+                    <h2> Vous avez :</h2>
+                </div>
+                <div class="row mt-3 text-center d-flex justify-content-around">
+                    <div class="col-2 alert-dark border border-dark border-1 me-2 p-0">
+                        <span> {{ countAllTest }} Tests</span>
+                    </div>
+                    <div class="col-2 alert-dark border border-dark border-1 me-2 p-0">
+                        <span> {{ countAllGame }} Jeux</span>
+                    </div>
+                    <div class="col-2 alert-dark border border-dark border-1 me-2 p-0">
+                        <span> {{ countAllCategory }} Catégories</span>
+                    </div>
+                    <div class="col-2 alert-dark border border-dark border-1 p-0">
+                        <span> {{ countAllConsole }} Consoles</span>
+                    </div>
+                </div>
+            </section>
+            <section class="m-3">
+                <div class="row text-center">
+                    <h2> En détail :</h2>
+                </div>
+                <div class="d-flex justify-content-around mt-2">
+                    <div class="col-3">
+                        <h3>Vos tests et jeux</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-dark d-flex align-items-center">
+                                <span class="m-0">{{ countAllTest }} au total</span>
+                            </li>
+                            {% for game in games %}
+                            <li class="list-group-item rounded-0 d-flex align-items-center">
+                                <p class="m-0">{{ game.name }}</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col-3">
+                        <h3>Vos consoles</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-dark d-flex align-items-center">
+                                <span class="m-0">{{ countAllConsole }} au total</span>
+                            </li>
+                            {% for console in consoles %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="m-0">{{ console.name }}</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col-3">
+                        <h3>Vos catégories</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-dark d-flex align-items-center">
+                                <span class="m-0">{{ countAllCategory }} au total</span>
+                            </li>
+                            {% for category in categories %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="m-0">{{ category.name }}</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>  
+                </div>
+            </section>
+        </div>
     </div>
 {% endblock %}
