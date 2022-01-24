@@ -19,32 +19,11 @@ class ConsoleRepository extends ServiceEntityRepository
         parent::__construct($registry, Console::class);
     }
 
-    // /**
-    //  * @return Console[] Returns an array of Console objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function countAllConsole() 
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('cons')
+            ->select("COUNT(cons.id)")
             ->getQuery()
-            ->getResult()
-        ;
+            ->getSingleScalarResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Console
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
