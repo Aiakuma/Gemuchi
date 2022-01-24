@@ -25,17 +25,7 @@ class ContactController extends AbstractController
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid() ){
-            /**$contactFormData = $form->getData();
 
-            $message = (new Email())
-            ->from($contactFormData['email'])
-            ->to('ton@gmail.com')
-            ->subject('vous avez reçu unn email')
-            ->text('Sender : '.$contactFormData['email'].\PHP_EOL.
-                $contactFormData['Message'],
-                'text/plain');
-            $mailer->send($message);
-            $this->addFlash('success', 'Votre message a été envoyé.');**/
             return $this->redirectToRoute('contact');
             }
             return $this->render('contact/index.html.twig',

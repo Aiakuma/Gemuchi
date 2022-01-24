@@ -1,99 +1,126 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ game.name }}{% endblock %}
-
-{% block body %}
-<main>
-  <div class="container container-test px-0">
-        <h1 class=" text-center mt-3 py-0 mb-2 py-md-2">{{ game.name }}</h1>
-        <div class="img-test mx-auto">
-            <img class="img-fluid" src="{{ game.picture }}">
-        </div>   
-        <div class="d-flex justify-content-around my-3">
-            <div class="d-flex flex-column">
-                <p>Année : {{game.year}}</p>
-                <p> Catégorie : 
-                {% for category in game.category %}
-                    <span>{{category.name}} - </span>
-                {% endfor %}
-                </p>
-                <p> Plateforme : 
-                {% for console in game.console %}
-                    <span>{{console.name}} - </span>
-                {% endfor %}
-                </p>
-            </div>
-
-            <div class="note-game d-flex flex-column p-5">
-                <span>{{game.note}} </span>
-                {% for note in game.note %}
-                    <span>{{note.coup_de_coeur}} </span>
-                {% endfor %}
-            </div> 
-        </div>
-    <div class="content-test container p-5">  
-        <div>
-            <div>
-            <h3>Son</h3>
-            <p>{{test.son}}</p>
-        </div>
-        <div>
-            <h3>Solidité du Code</h3>
-            <p>{{test.code}}</p>
-        </div>
-        <div>
-            <h3>Gameplay</h3>
-            <p>{{test.gameplay}}</p>
-        </div>
-        <div>
-            <h3>Rythme de Jeu</h3>
-            <p>{{test.rythme}}</p>
-        </div>
-        <div>
-            <h3>Scénario</h3>
-            <p>{{test.scenario}}</p>
-        </div><div>
-            <h3>Graphisme</h3>
-            <p>{{test.graphisme}}</p>
-        </div>
-        <div>
-            <h3>Accessibilité In-Game</h3>
-            <p>{{test.accessibilite}}</p>
-        </div>
-        <div>
-            <h3>Accessibilité IRL </h3>
-            <p>{{test.disponibilite}}</p>
-        </div>
-        <div>
-            <h3>Ouverture à la réflexion, qualité artistique du produit culturel</h3>
-            <p>{{test.ouverturereflexion}}</p>
-        </div>
-    </div>
-        
-    
-    </div>
-    <div class=" text-center my-5">
-        <a class=" link-affiliation text-decoration-none px-4 py-3 " href="#"> Lien d'affiliation <i class="icon-link fas fa-chevron-right"></i> </a>
-    </div>
-
-    <div class="container-slider p-4">
-         <div class="slider-wrapper">
-            <div class="slider-main" id="slider-main">
-                {% for game in games %}
-                <div class="slider-item">
-                    <img class="rounded" src="{{ game.picture}}" alt="image">
-                </div>
-                {% endfor %}
-            </div>
-            <button type="button" class="slider-btn btn-prev" onclick="prev()"><i class="fas fa-chevron-left"></i></button>
-            <button type="button" class="slider-btn btn-next" onclick="next()"><i class="fas fa-chevron-right"></i></button>
-        </div>
-    </div>
-   
-
-  </div>
-
-</main>
+{% block title %}
+	{{ game.name }}
 {% endblock %}
 
+{% block body %}
+	<main>
+		<div class="container container-test px-0">
+			<h1 class=" text-center mt-3 py-0 mb-2 py-md-2">{{ game.name }}</h1>
+			<div class="img-test mx-auto">
+				<img class="img-fluid" src="{{ game.picture }}">
+			</div>
+			<div class="d-md-flex justify-content-md-around my-5">
+				<div class="d-flex justify-content-center ">
+					<div>
+						<p>Année :
+							{{game.year}}</p>
+						<p>
+							Catégorie :
+							{% for category in game.category %}
+								<span>{{category.name}}
+									-
+								</span>
+							{% endfor %}
+						</p>
+						<p>
+							Plateforme :
+							{% for console in game.console %}
+								<span>{{console.name}}
+									-
+								</span>
+							{% endfor %}
+						</p>
+					</div>
 
+				</div>
+
+				<div class="d-flex flex-column d-flex justify-content-center align-items-center mt-5 my-md-0">
+					<div class="note-game p-3">
+						<span>
+							{#{{game.note}}#}
+						</span>
+					</div>
+					<div>
+						<span class="fw-bold fs-4">
+							+
+							{{game.note.coupdecoeur}}
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="content-test container-lg p-3 p-md-5">
+				<div>
+					<div>
+						<h3>Son</h3>
+						<p class="test-text">{{test.son}}<p/></p>
+					</div>
+					<div>
+						<h3>Solidité du Code</h3>
+						<p class="test-text">{{test.code}}</p>
+					</div>
+					<div>
+						<h3>Gameplay</h3>
+						<p class="test-text">{{test.gameplay}}</p>
+					</div>
+					<div>
+						<h3>Rythme de Jeu</h3>
+						<p class="test-text">{{test.rythme}}</p>
+					</div>
+					<div>
+						<h3>Scénario</h3>
+						<p class="test-text">{{test.scenario}}</p>
+					</div>
+					<div>
+						<h3>Graphisme</h3>
+						<p class="test-text">{{test.graphisme}}</p>
+					</div>
+					<div>
+						<h3>Accessibilité In-Game</h3>
+						<p class="test-text">{{test.accessibilite}}</p>
+					</div>
+					<div>
+						<h3>Accessibilité IRL
+						</h3>
+						<p class="test-text">{{test.disponibilite}}</p>
+					</div>
+					<div>
+						<h3>Ouverture à la réflexion, qualité artistique du produit culturel</h3>
+						<p class="test-text">{{test.ouverturereflexion}}</p>
+					</div>
+				</div>
+
+
+			</div>
+			<div class=" text-center my-5">
+				<a class=" link-affiliation text-decoration-none px-3 py-2 px-md-4 py-md-3 " href="#">
+					Lien d'affiliation
+					<i class="icon-link fas fa-chevron-right"></i>
+				</a>
+			</div>
+
+			<div class="container-slider p-4 ">
+				<div class="slider-wrapper">
+					<div class="slider-main" id="slider-main">
+						{% for game in games %}
+							<div class="slider-item">
+								<a href="{{ path('view_test', { id: game.id }) }}">
+									<img class="rounded" src="{{ game.picture}}" alt="image">
+								</a>
+							</div>
+						{% endfor %}
+					</div>
+					<button type="button" class="slider-btn btn-prev" onclick="prev()" aria-hidden="true">
+						<i class="fas fa-chevron-left"></i>
+					</button>
+					<button type="button" class="slider-btn btn-next" onclick="next()" aria-hidden="true">
+						<i class="fas fa-chevron-right"></i>
+					</button>
+				</div>
+			</div>
+
+		</div>
+
+	</main>
+{% endblock %}
