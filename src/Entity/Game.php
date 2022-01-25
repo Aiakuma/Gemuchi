@@ -66,11 +66,13 @@ class Game
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="game")
+     * @ORM\JoinTable(name="game_category")
      */
     private $Category;
 
     /**
      * @ORM\ManyToMany(targetEntity=Console::class, inversedBy="game")
+     * @ORM\JoinTable(name="game_console")
      */
     private $Console;
 
@@ -239,5 +241,10 @@ class Game
         $this->Console->removeElement($console);
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

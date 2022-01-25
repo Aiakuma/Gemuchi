@@ -18,7 +18,7 @@ class ConsoleCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnDetail()->hideOnForm()->hideOnIndex(),
-            TextField::new('name'),
+            TextField::new('name', 'Nom'),
         ];
     }
 

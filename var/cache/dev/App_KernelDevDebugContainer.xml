@@ -2076,6 +2076,7 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.en.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.en.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.en.php</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi/translations\messages.en.yaml</argument>
           </argument>
           <argument key="es" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.es.xlf</argument>
@@ -2111,6 +2112,7 @@
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\form/Resources/translations\validators.fr.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\security-core/Resources/translations\security.fr.xlf</argument>
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.fr.php</argument>
+            <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi/translations\messages.fr.yaml</argument>
           </argument>
           <argument key="gl" type="collection">
             <argument>C:\Users\lkler\Desktop\Sites\Gemuchi\Gemuchi\vendor\symfony\validator/Resources/translations\validators.gl.xlf</argument>
@@ -2363,6 +2365,7 @@
       <call method="setFallbackLocales">
         <argument type="collection">
           <argument>en</argument>
+          <argument>fr</argument>
         </argument>
       </call>
     </service>
