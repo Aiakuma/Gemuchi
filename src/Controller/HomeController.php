@@ -29,4 +29,6 @@ class HomeController extends AbstractController
                 'consoles' => $consoles,
             ]);
     }
+
+    
 }

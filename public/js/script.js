@@ -23,20 +23,14 @@ function topFunction() {
 /** FILTRE */
 
 /** menu burger */
-let menu = document.querySelector('.navbar-toggler');
-let navCollapse = document.getElementById('navbarNav');
-let nav = document.querySelector(".navbar");
-
-
-menu.addEventListener('click', () => {
-  nav.style.background = "#C2C6D9";
-})
-
-
-/** condition if pour savoir si la classe show est présente ou pas 
-if (navCollapse.classList.contains("show")){nav.style.background = "#C2C6D9";}*/
-
-
+function toggleMenu(){
+  const navbar = document.querySelector('.navbar');
+  const burger = document.querySelector('.burger');
+  burger.addEventListener('click',()=>{
+    navbar.classList.toggle('show-nav');
+  })
+}
+toggleMenu();
 
 
 /* CAROUSEL */
