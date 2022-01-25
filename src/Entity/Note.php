@@ -376,4 +376,5 @@ class Note
     {
         return $this->musique. ' '. $this->absencebug. ' '. $this->tempschargement. ' '. $this->bruitage. ' '. $this->originalite. ' '. $this->rendementhoraire. ' '. $this->phasejeu. ' '. $this->chargeemotionnelle. ' '. $this->narration. ' '. $this->pertinencepartipris. ' '. $this->diversitenuance. ' '. $this->gestiondifficulte. ' '. $this->efficaciteinterface. ' '. $this->disponibilite. ' '. $this->messageautocritique. ' '. $this->integrationmessage. ' '. $this->coupdecoeur. ' '. $this->synergie. ' '. $this->ressourcemateriel;
     }
+    
 }

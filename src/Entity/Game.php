@@ -183,7 +183,7 @@ class Game
 
     public function getTest(): ?Test
     {
-        return $this->Tests;
+        return $this->Test;
     }
 
     public function setTest(?Test $Test): self
@@ -239,5 +239,10 @@ class Game
         $this->Console->removeElement($console);
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

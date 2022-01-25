@@ -51,7 +51,11 @@ class DashboardController extends AbstractDashboardController
         $this->noteRepository = $noteRepository;
     }
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/{_locale}/admin", name="admin",
+     *  requirements={
+     *      "_locale": "en|fr",
+     *  }
+     * )
      */
     public function index(): Response
     {
