@@ -6,6 +6,7 @@ use App\Entity\Game;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -18,21 +19,16 @@ class GameCrudController extends AbstractCrudController
         return Game::class;
     }
 
-    protected $categoryRepository;
-    protected $consoleRepository;
-
-
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnDetail()->hideOnForm()->hideOnIndex(),
-            TextField::new('name'),
-            NumberField::new('price'),
-            NumberField::new('year'),
-            TextField::new('author'),
-            TextEditorField::new('resume'),
-            TextEditorField::new('content'),
+            IdField::new('id', 'Index')->hideOnIndex()->hideOnForm()->hideOnDetail(),
+            TextField::new('name', 'Nom'),
+            MoneyField::new('price', 'Prix')->setCurrency('EUR'),
+            NumberField::new('year', 'Année'),
+            TextField::new('author', 'Auteur'),
+            TextEditorField::new('resume', 'Résumé'),
+            TextEditorField::new('content', 'Description détaillée'),
         ];
     }
-
 }

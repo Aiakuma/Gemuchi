@@ -66,13 +66,11 @@ class Game
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="game")
-     * @ORM\JoinTable(name="game_category")
      */
     private $Category;
 
     /**
      * @ORM\ManyToMany(targetEntity=Console::class, inversedBy="game")
-     * @ORM\JoinTable(name="game_console")
      */
     private $Console;
 
@@ -185,7 +183,7 @@ class Game
 
     public function getTest(): ?Test
     {
-        return $this->Tests;
+        return $this->Test;
     }
 
     public function setTest(?Test $Test): self

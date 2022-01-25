@@ -300,7 +300,7 @@ class AppFixtures extends Fixture
          $games = [
             [
                 'name' => 'Ace Attorney Trilogy',
-                'price' => '20',
+                'price' => '2000',
                 'year' => '2018',
                 'author' => 'Capcom',
                 'resume' => "Le célèbre avocat du barreau est de retour ! Phoenix Wright : Ace Attorney Trilogy est un jeu d'aventure sur 3DS.",
@@ -309,7 +309,7 @@ class AppFixtures extends Fixture
             ],
             [
                 'name' => 'Batman Arkham Asylum',
-                'price' => '20',
+                'price' => '2000',
                 'year' => '2009',
                 'author' => 'Rocksteady Studio',
                 'resume' => "Quelque chose se prépare dans l'Asile d'Arkham. Arrêtez le Joker avant qu'il soit trop tard.",
@@ -318,7 +318,7 @@ class AppFixtures extends Fixture
             ],
             [
                 'name' => 'Battletech',
-                'price' => '40',
+                'price' => '4000',
                 'year' => '2018',
                 'author' => 'Harebrained Schemes',
                 'resume' => "Menez votre lance de mecha géant mercenaire et faites chutez l'usurpateur.",
@@ -327,7 +327,7 @@ class AppFixtures extends Fixture
             ],
             [
                 'name' => 'Doom 2016',
-                'price' => '20',
+                'price' => '2000',
                 'year' => '2016',
                 'author' => 'Id Software',
                 'resume' => "Shooter nerveux à l'Esthétique Métal. Vous serez seul et ils seront Légions.",
@@ -336,7 +336,7 @@ class AppFixtures extends Fixture
             ],
             [
                 'name' => 'Fallout 4',
-                'price' => '40',
+                'price' => '4000',
                 'year' => '2015',
                 'author' => 'Bethesda Softwork',
                 'resume' => "Explorer un Boston ravagé par la guerre nucléaire à la recherche de votre fils.",
@@ -345,7 +345,7 @@ class AppFixtures extends Fixture
             ],
             [
                 'name' => 'Metal Gear Rising : Revengeance',
-                'price' => '20',
+                'price' => '2000',
                 'year' => '2013',
                 'author' => 'Platinum Game',
                 'resume' => "Venez à bout de cyborgs terroriste dans un beat them all cyberpunk exigeant.",

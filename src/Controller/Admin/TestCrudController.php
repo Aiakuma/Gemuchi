@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Test;
+use App\Repository\NoteRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
@@ -18,10 +19,20 @@ class TestCrudController extends AbstractCrudController
         return Test::class;
     }
 
+    protected $noteRepository;
+
+    public function __construct(
+        NoteRepository $noteRepository
+    )
+    {
+        $this->noteRepository = $noteRepository;
+    }
+
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            IdField::new('id', 'Index')->hideOnIndex()->hideOnForm()->hideOnDetail(),
+            AssociationField::new('game', 'Jeu'),
             TextEditorField::new('son', 'Son'),
             TextEditorField::new('code', 'Code'),
             TextEditorField::new('gameplay', 'Gameplay'),

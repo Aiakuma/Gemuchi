@@ -19,32 +19,11 @@ class NoteRepository extends ServiceEntityRepository
         parent::__construct($registry, Note::class);
     }
 
-    // /**
-    //  * @return Note[] Returns an array of Note objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function totalNote() 
     {
         return $this->createQueryBuilder('n')
-            ->andWhere('n.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('n.id', 'ASC')
-            ->setMaxResults(10)
+            ->select("SUM(n.musique + n.absencebug + n.tempschargement + n.bruitage + n.originalite + n.rendementhoraire + n.phasejeu + n.chargeemotionnelle + n.narration + n.pertinencepartiepris + n.diversitenuance + n.gestiondifficulte + n.efficaciteinterface + n.disponibilite + n.messageautocritique + n.integrationmessage + n.synergie + n.ressourcemateriel")
             ->getQuery()
-            ->getResult()
-        ;
+            ->getSingleScalarResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Note
-    {
-        return $this->createQueryBuilder('n')
-            ->andWhere('n.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
