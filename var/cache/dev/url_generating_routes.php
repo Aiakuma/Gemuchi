@@ -18,7 +18,7 @@ return [
     'admin' => [['_locale'], ['_controller' => 'App\\Controller\\Admin\\DashboardController::index'], ['_locale' => 'en|fr'], [['text', '/admin'], ['variable', '/', 'en|fr', '_locale', true]], [], [], []],
     'contact' => [[], ['_controller' => 'App\\Controller\\ContactController::index'], [], [['text', '/contact/']], [], [], []],
     'home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],
-    'mention_legale' => [[], ['_controller' => 'App\\Controller\\MentionLegaleController::index'], [], [['text', '/mention/legale']], [], [], []],
+    'mention_legale' => [[], ['_controller' => 'App\\Controller\\MentionLegaleController::index'], [], [['text', '/mention-legale']], [], [], []],
     'app_register' => [[], ['_controller' => 'App\\Controller\\RegistrationController::register'], [], [['text', '/register']], [], [], []],
     'search' => [[], ['_controller' => 'App\\Controller\\SearchController::index'], [], [['text', '/search']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/connexion']], [], [], []],

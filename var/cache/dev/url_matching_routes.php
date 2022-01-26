@@ -16,7 +16,7 @@ return [
         '/a-propos' => [[['_route' => 'about', '_controller' => 'App\\Controller\\AboutController::index'], null, null, null, true, false, null]],
         '/contact' => [[['_route' => 'contact', '_controller' => 'App\\Controller\\ContactController::index'], null, null, null, true, false, null]],
         '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
-        '/mention/legale' => [[['_route' => 'mention_legale', '_controller' => 'App\\Controller\\MentionLegaleController::index'], null, null, null, false, false, null]],
+        '/mention-legale' => [[['_route' => 'mention_legale', '_controller' => 'App\\Controller\\MentionLegaleController::index'], null, null, null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
         '/search' => [[['_route' => 'search', '_controller' => 'App\\Controller\\SearchController::index'], null, null, null, false, false, null]],
         '/connexion' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],

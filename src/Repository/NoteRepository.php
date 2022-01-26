@@ -22,7 +22,8 @@ class NoteRepository extends ServiceEntityRepository
     public function totalNote() 
     {
         return $this->createQueryBuilder('n')
-            ->select("SUM(n.musique + n.absencebug + n.tempschargement + n.bruitage + n.originalite + n.rendementhoraire + n.phasejeu + n.chargeemotionnelle + n.narration + n.pertinencepartiepris + n.diversitenuance + n.gestiondifficulte + n.efficaciteinterface + n.disponibilite + n.messageautocritique + n.integrationmessage + n.synergie + n.ressourcemateriel")
+            ->select("SUM(n.id)")
+            //->select("SUM(n.musique + n.absencebug + n.tempschargement + n.bruitage + n.originalite + n.rendementhoraire + n.phasejeu + n.chargeemotionnelle + n.narration + n.pertinencepartipris + n.diversitenuance + n.gestiondifficulte + n.efficaciteinterface + n.disponibilite + n.messageautocritique + n.integrationmessage + n.synergie + n.ressourcemateriel)")
             ->getQuery()
             ->getSingleScalarResult();
     }
