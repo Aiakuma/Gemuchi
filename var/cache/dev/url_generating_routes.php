@@ -15,7 +15,7 @@ return [
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     'about' => [[], ['_controller' => 'App\\Controller\\AboutController::index'], [], [['text', '/a-propos/']], [], [], []],
-    'admin' => [[], ['_controller' => 'App\\Controller\\Admin\\DashboardController::index'], [], [['text', '/admin']], [], [], []],
+    'admin' => [['_locale'], ['_controller' => 'App\\Controller\\Admin\\DashboardController::index'], ['_locale' => 'en|fr'], [['text', '/admin'], ['variable', '/', 'en|fr', '_locale', true]], [], [], []],
     'contact' => [[], ['_controller' => 'App\\Controller\\ContactController::index'], [], [['text', '/contact/']], [], [], []],
     'home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],
     'mention_legale' => [[], ['_controller' => 'App\\Controller\\MentionLegaleController::index'], [], [['text', '/mention/legale']], [], [], []],

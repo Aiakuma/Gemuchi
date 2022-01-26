@@ -27,7 +27,7 @@ class Category
     /**
      * @ORM\ManyToMany(targetEntity=Game::class, mappedBy="Category")
      */
-    private $games;
+    private $game;
 
     public function __construct()
     {

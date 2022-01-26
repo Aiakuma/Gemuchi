@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Console;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -18,7 +19,8 @@ class ConsoleCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnDetail()->hideOnForm()->hideOnIndex(),
-            TextField::new('name'),
+            TextField::new('name', 'Nom'),
+            AssociationField::new('game'),
         ];
     }
 

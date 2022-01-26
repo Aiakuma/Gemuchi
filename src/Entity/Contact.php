@@ -38,11 +38,6 @@ class Contact
      */
     private $message;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $request;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -95,17 +90,4 @@ class Contact
 
         return $this;
     }
-
-    public function getRequest(): ?string
-    {
-        return $this->request;
-    }
-
-    public function setRequest(string $request): self
-    {
-        $this->request = $request;
-
-        return $this;
-    }
-
 }
