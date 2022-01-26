@@ -412,6 +412,7 @@
       <tag name="ea.crud_controller"/>
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
+      <argument type="service" id="App\Repository\NoteRepository"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.ipvtXDO.App\Controller\Admin\TestCrudController"/>
       </call>
