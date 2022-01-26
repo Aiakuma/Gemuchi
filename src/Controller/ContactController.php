@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mailer\MailerInterface;
+use Doctrine\ORM\EntityManagerInterface;
+
 
 /**
      * @Route("/contact")
@@ -17,6 +19,11 @@ use Symfony\Component\Mailer\MailerInterface;
 
 class ContactController extends AbstractController
 {
+    private $entityManager;/*créer cet attribut manuellement ainsi que sa méthode construct*/
+
+    public function __construct(EntityManagerInterface $entityManager){
+        $this->entityManager = $entityManager;
+    }
     /**
      * @Route("/", name="contact")
      */
@@ -37,12 +44,12 @@ class ContactController extends AbstractController
             $mailer->send($message);
             $this->addFlash('success', 'Votre message a été envoyé.');**/
 
-            /* En cas d'échec de DevMail
+            
             $contact = $form->getData();
             $this->entityManager->persist($contact);
             $this->entityManager->flush();
             $this->addFlash('success', 'Votre message a été envoyé.');
-            */
+            
             return $this->redirectToRoute('contact');
             }
             return $this->render('contact/index.html.twig',
