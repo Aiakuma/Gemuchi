@@ -42,10 +42,7 @@ class ContactType extends AbstractType
             ->add('message',TextareaType::class,[
                 'attr' => ['rows' => 6,'placeholder' => 'Saisir votre message'],          
             ])
-            ->add('agreeTerms', CheckboxType::class, ['mapped' => false])
-
-            
-        ;
+            ->add('agreeTerms', CheckboxType::class, ['mapped' => false]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
